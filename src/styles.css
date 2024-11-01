@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: Gilroy-Regular;
+  src: url(assets/fonts/gilroy-regular.ttf);
+}
+
+@font-face {
+  font-family: Gilroy-Medium;
+  src: url(assets/fonts/Geometria-Medium.ttf);
+}
+
+@font-face {
+  font-family: Gilroy-Bold;
+  src: url(assets/fonts/Geometria-Bold.ttf);
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #F5F5F5;
+  font-family: Gilroy-Medium, "Gilroy-Medium", sans-serif;
+}
