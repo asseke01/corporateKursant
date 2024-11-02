@@ -1,0 +1,73 @@
+<h2>Сенім жәшігі</h2>
+
+<div class="white-container">
+
+  <div class="main-content">
+
+    <div class="action-buttons">
+      <button class="action-button" [class.active]="status === ''" (click)="changeType('')">Барлығы</button>
+      <button class="action-button" [class.active]="status === 'new'" (click)="changeType('new')">Жаңа өтінім</button>
+      <button class="action-button" [class.active]="status === 'worked_out'" (click)="changeType('worked_out')">Қарастырылды</button>
+    </div>
+
+
+    <div class="table-container">
+      <table>
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Создан</th>
+          <th>Текст</th>
+          <th>Статус</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let item of box let i = index">
+        <tr>
+          <td>{{i + 1}}</td>
+          <td>{{item.created_ad}}</td>
+          <td>{{item.text}}</td>
+          <td>
+            <ng-container *ngIf="item.status == 'worked_out'">
+              <span>Қабылданды</span>
+            </ng-container >
+
+            <ng-container *ngIf="item.status == 'new'">
+              <button class="accept-button" (click)="openDialog('250ms', '250ms', item.id)">Қабылдау</button>
+            </ng-container>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+<ng-template #dialogTemplate>
+  <div class="dialog-header">
+    <h2 mat-dialog-title>Растау</h2>
+    <button mat-icon-button class="close-button" (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-dialog-content>
+    <form [formGroup]="boxForm">
+      <div class="content">
+
+        <div class="form-group">
+          <label for="fio">ФИО</label>
+          <input type="text" id="fio" name="fio" formControlName = 'report_text'>
+        </div>
+
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button class="save-subject" (click)="onSave()">Сақтау</button>
+  </mat-dialog-actions>
+</ng-template>

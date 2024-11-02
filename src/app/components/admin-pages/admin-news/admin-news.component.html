@@ -1,0 +1,205 @@
+<div class="news-header">
+  <div class="info">
+    <h2>Жаңалықтар</h2>
+    <div class="vertical-divider"></div>
+    <div class="school-selector">
+      <label for="schoolSelect">Мектепті тандаңыз: </label>
+      <select id="schoolSelect" (change)="onSchoolChange($event)" class="custom-select">
+        <option [value]="null" disabled selected>Выберите школу</option>
+        <option *ngFor="let school of schools" [value]="school.id">{{ school.name }}</option>
+      </select>
+    </div>
+  </div>
+
+
+
+
+  <div class="actions">
+    <button class="add-button" (click)="openDialog('250ms', '250ms','create')"><i class="bi bi-plus-circle"></i>  Жаңалық қосу</button>
+  </div>
+</div>
+
+
+<div class="white-container">
+  <div class="main-content">
+    <div *ngIf="box.length === 0" class="empty-message">Пусто</div>
+    <div class="news-grid" *ngIf="box.length > 0">
+      <div class="news-card" *ngFor="let item of box">
+        <div class="news-content">
+          <span class="news-category">{{ item.name }}</span>
+          <h2 class="news-title">{{ item.name }}</h2>
+          <div class="news-tags">
+            <span class="tag" *ngFor="let tag of item.tags">{{ tag }}</span>
+          </div>
+          <a class="news-link" (click)="openDialog('250ms', '250ms','update', item.id)">Изменить</a>
+        </div>
+        <div class="news-thumbnail" [style.backgroundImage]="'url(http://127.0.0.1:8000' + item.poster">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<ng-template #dialogTemplate>
+  <div class="dialog-header">
+    <h2 mat-dialog-title *ngIf="modalType=='create'">Жаңалық қосу</h2>
+    <h2 mat-dialog-title *ngIf="modalType=='update'">Жаңалықты жаңарту</h2>
+    <button mat-icon-button class="close-button" (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-dialog-content>
+    <ng-container *ngIf="modalType == 'create'">
+      <form [formGroup]="newsForm" (ngSubmit)="onSubmit()" style="width: 100%;">
+        <div class="content">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name" class="form-label">Название поста</label>
+              <input type="text" id="name" formControlName="name" placeholder="Введите название поста" />
+            </div>
+
+            <div class="form-group">
+              <label for="index" class="form-label">Индекс</label>
+              <input type="number" id="index" formControlName="index" placeholder="Введите индекс" />
+            </div>
+          </div>
+
+          <div class="section-divider">Выбор школы</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="schoolSelectId" class="form-label">Школа</label>
+              <select id="schoolSelectId" formControlName="schools" class="custom-select">
+                <option [value]="null" disabled selected>Выберите школу</option>
+                <option *ngFor="let school of schools" [value]="school.id">{{ school.name }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="section-divider">Описание</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label  class="form-label">Описание поста</label>
+              <quill-editor
+                formControlName="description"
+                placeholder="Введите описание"
+                style="height: 200px; margin-bottom: 30px"
+                [modules]="quillModules">
+              </quill-editor>
+            </div>
+          </div>
+
+          <div class="section-divider">Тэги</div>
+          <div class="add-tag-container">
+            <input type="text" #tagInput placeholder="Введите тег" (keydown.enter)="addTag(tagInput.value); tagInput.value=''" />
+            <button type="button" class="add-tag-button" (click)="addTag(tagInput.value); tagInput.value=''">
+              <i class="bi bi-plus-circle"></i> Добавить
+            </button>
+          </div>
+
+          <div formArrayName="tags" class="tags-container">
+            <div *ngFor="let tag of tags.controls; let i = index" class="chip">
+              <span>{{ tag.value }}</span>
+              <button type="button" class="remove-chip" (click)="removeTag(i)">×</button>
+            </div>
+          </div>
+
+          <div class="section-divider">Файлы</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="poster">Загрузить постер</label>
+              <div class="file-upload-wrapper">
+                <input type="file" id="poster" (change)="onFileSelect($event)" class="file-input" />
+                <label for="poster" class="file-label">
+                  <i class="bi bi-upload"></i> Выберите файл
+                </label>
+                <span class="file-name">{{ selectedFileName || "Файл не выбран" }}</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </ng-container>
+
+    <ng-container *ngIf="modalType == 'update'">
+      <form [formGroup]="newsForm" style="width: 100%;">
+        <div class="content">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name" class="form-label">Название поста</label>
+              <input type="text" id="name" formControlName="name" placeholder="Введите название поста" />
+            </div>
+
+            <div class="form-group">
+              <label for="index" class="form-label">Индекс</label>
+              <input type="number" id="index" formControlName="index" placeholder="Введите индекс" />
+            </div>
+          </div>
+
+          <div class="section-divider">Выбор школы</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="schoolSelectId" class="form-label">Школа</label>
+              <select id="schoolSelectId" formControlName="schools" class="custom-select">
+                <option [value]="null" disabled selected>Выберите школу</option>
+                <option *ngFor="let school of schools" [value]="school.id">{{ school.name }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="section-divider">Описание</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Описание поста</label>
+              <quill-editor
+                formControlName="description"
+                placeholder="Введите описание"
+                style="height: 200px; margin-bottom: 30px"
+                [modules]="quillModules">
+              </quill-editor>
+            </div>
+          </div>
+
+          <div class="section-divider">Тэги</div>
+          <div class="add-tag-container">
+            <input type="text" #tagInput placeholder="Введите тег" (keydown.enter)="addTag(tagInput.value); tagInput.value=''" />
+            <button type="button" class="add-tag-button" (click)="addTag(tagInput.value); tagInput.value=''">
+              <i class="bi bi-plus-circle"></i> Добавить
+            </button>
+          </div>
+
+          <div formArrayName="tags" class="tags-container">
+            <div *ngFor="let tag of tags.controls; let i = index" class="chip">
+              <span>{{ tag.value }}</span>
+              <button type="button" class="remove-chip" (click)="removeTag(i)">×</button>
+            </div>
+          </div>
+
+          <div class="section-divider">Файлы</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="poster">Загрузить постер</label>
+              <div class="file-upload-wrapper">
+                <input type="file" id="poster" (change)="onFileSelect($event)" class="file-input" />
+                <label for="poster" class="file-label">
+                  <i class="bi bi-upload"></i> Выберите файл
+                </label>
+                <span class="file-name">{{ selectedFileName || "Файл не выбран" }}</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </ng-container>
+
+
+
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button class="save-subject" (click)="onSubmit()">Сақтау</button>
+  </mat-dialog-actions>
+</ng-template>

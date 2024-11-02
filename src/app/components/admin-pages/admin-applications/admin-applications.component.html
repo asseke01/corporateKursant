@@ -1,1 +1,84 @@
-<p>admin-applications works!</p>
+<h2>Өтінімдер</h2>
+
+<div class="white-container">
+
+  <div class="main-content">
+
+    <div class="action-buttons">
+      <button class="action-button" [class.active]="status === ''" (click)="changeType('')">Барлығы</button>
+      <button class="action-button" [class.active]="status === 'accepted'" (click)="changeType('accepted')">Қабылданды</button>
+      <button class="action-button" [class.active]="status === 'new'" (click)="changeType('new')">Қабылданбады</button>
+    </div>
+
+
+    <div class="table-container">
+      <table>
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Создан</th>
+          <th>Телефон номер</th>
+          <th>ФИО</th>
+          <th>Қабылданған уақыт</th>
+          <th>Қабыладанған</th>
+          <th>Cтатус</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let item of applications let i = index">
+        <tr>
+          <td>{{i + 1}}</td>
+          <td>{{item.created_ad}}</td>
+          <td>{{item.phone_number}}</td>
+          <td>{{item.fullname}}</td>
+          <td>{{item.handled_at}}</td>
+          <td>{{item.handled_by}}</td>
+          <td>
+            <ng-container *ngIf="item.status == 'accepted'">
+              <span>Қабылданды</span>
+            </ng-container >
+
+            <ng-container *ngIf="item.status == 'new'">
+              <button class="action-button" (click)="openDialog('250ms', '250ms', item.id)">Қабылдау</button>
+            </ng-container>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+<ng-template #dialogTemplate>
+  <div class="dialog-header">
+    <h2 mat-dialog-title >Растау</h2>
+    <button mat-icon-button class="close-button" (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-dialog-content>
+    <form [formGroup]="applicantForm">
+      <div class="content">
+
+        <div class="form-group">
+          <label for="fio">ФИО</label>
+          <input type="text" id="fio" name="fio" formControlName = 'fullname'>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Телефон</label>
+          <input type="text" id="phone" name="phone"   [mask]="'(000) 000 00 00'" prefix="+7 " formControlName = 'phone_number'>
+        </div>
+
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button class="save-subject" (click)="onSave()">Сақтау</button>
+  </mat-dialog-actions>
+</ng-template>

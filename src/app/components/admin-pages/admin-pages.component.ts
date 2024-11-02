@@ -13,5 +13,9 @@ import {RouterOutlet} from '@angular/router';
   styleUrl: './admin-pages.component.css'
 })
 export class AdminPagesComponent {
+  isSidebarOpen = true;
 
+  onSidebarToggle(isOpen: boolean) {
+    this.isSidebarOpen = isOpen;
+  }
 }

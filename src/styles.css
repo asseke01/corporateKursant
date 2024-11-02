@@ -1,3 +1,6 @@
+@import 'quill/dist/quill.snow.css';
+
+
 @font-face {
   font-family: Gilroy-Regular;
   src: url(assets/fonts/gilroy-regular.ttf);
@@ -12,10 +15,7 @@
   font-family: Gilroy-Bold;
   src: url(assets/fonts/Geometria-Bold.ttf);
 }
-*{
-  margin: 0;
-  padding: 0;
-}
+
 
 body {
   margin: 0;
@@ -24,3 +24,10 @@ body {
   background-color: #F5F5F5;
   font-family: Gilroy-Medium, "Gilroy-Medium", sans-serif;
 }
+
+button{
+  cursor: pointer;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

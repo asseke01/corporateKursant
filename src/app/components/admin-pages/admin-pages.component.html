@@ -1,8 +1,7 @@
-<app-admin-sidebar></app-admin-sidebar>
+<div class="app-container">
+  <app-admin-sidebar class="sidebar" (sidebarToggle)="onSidebarToggle($event)"></app-admin-sidebar>
 
-
-<div>
-
-  <router-outlet></router-outlet>
-
+  <div class="main-content" [class.shifted]="isSidebarOpen">
+    <router-outlet></router-outlet>
+  </div>
 </div>

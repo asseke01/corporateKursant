@@ -75,6 +75,34 @@ tbody tr:hover td.date a {
   text-decoration: underline;
 }
 
+
+.accept-button {
+  background-color: transparent;
+  border-radius: 7px;
+  padding: 5px 15px;
+  font-size: 15px;
+  border: 1px solid #1D1D42;
+  font-weight: 500;
+  color: #1D1D42;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.accept-button:hover {
+  background-color: #1D1D42;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.accept-button.active {
+  background-color: #1D1D42;
+  color: white;
+}
+
+
+
+
 .dialog-header {
   display: flex;
   justify-content: space-between;
