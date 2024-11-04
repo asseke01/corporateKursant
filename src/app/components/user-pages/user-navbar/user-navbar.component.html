@@ -1,0 +1,46 @@
+<div class="navbar-container">
+  <div class="navbar-left">
+    <img src="assets/img/navbar-kursant-icon.svg" alt="nav-icon" class="nav-icon">
+
+    <!-- Селект для Жобалар -->
+    <mat-form-field appearance="fill" class="select-project">
+      <mat-label>Жобалар</mat-label>
+      <mat-select [(value)]="selectedProject">
+        <mat-select-trigger>
+          {{ selectedProject }}
+        </mat-select-trigger>
+        <mat-option [value]="'Тестант'">
+          <div class="project-item">
+            <img src="assets/img/testant-nav-icon.svg" alt="TestAnt Icon" class="item-icon">
+            <span class="project-title">Пәндік және толық ҰБТ бойынша онлайн тестілеу жүйесі.</span>
+          </div>
+        </mat-option>
+        <mat-option [value]="'Курсант'">
+          <div class="option">
+            <div class="project-item">
+              <img src="assets/img/kursant-nav-icon.svg" alt="KursAnt Icon" class="item-icon">
+              <span class="project-title">Пәндік және толық ҰБТ бойынша онлайн тестілеу жүйесі.</span>
+            </div>
+            <div class="option-info">
+              <img src="assets/img/navbar-info-icon.svg" alt="info">
+              <p>КурсАнт IT экожүйесінің құрамы</p>
+            </div>
+          </div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Селект для Мектептер -->
+    <mat-form-field appearance="fill" class="select-school">
+      <mat-label>Мектептер</mat-label>
+      <mat-select [(value)]="selectedSchool">
+        <mat-option *ngFor="let school of schools" [value]="school">
+          {{ school }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Кнопка -->
+  <button class="nav-btn">Өтінім беру</button>
+</div>

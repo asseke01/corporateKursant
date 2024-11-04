@@ -16,7 +16,6 @@
   src: url(assets/fonts/Geometria-Bold.ttf);
 }
 
-
 body {
   margin: 0;
   padding: 0;
@@ -25,9 +24,12 @@ body {
   font-family: Gilroy-Medium, "Gilroy-Medium", sans-serif;
 }
 
-button{
+button {
   cursor: pointer;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+/*body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/

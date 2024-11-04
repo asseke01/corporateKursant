@@ -1,0 +1,102 @@
+<app-user-navbar></app-user-navbar>
+<div class="main-page__container">
+  <div class="section_one">
+    <div class="section1_left">
+      <div class="section_one__header">
+        <img src="assets/img/left-bar.svg" alt="left-bar">
+        <h1>Бізбен бірге жарқын болашаққа</h1>
+      </div>
+      <p>Үздік мектепте оқу мүмкіндігін жіберіп <br> алмаңыз. Оқуға өтінім қалдырыңыз, <br> менеджерлер хабарласады:</p>
+      <div class="left-input-btn">
+        <input type="text" placeholder="Номер">
+        <button>Өтінім беру</button>
+      </div>
+      <div class="star-arrow-container">
+        <img src="assets/img/star-arrow.svg" alt="arrow" class="star-arrow">
+      </div>
+    </div>
+    <div class="section1_right">
+      <img src="assets/img/main-page1.png" alt="1">
+    </div>
+  </div>
+  <div class="section_two">
+
+    <div class="section2-left">
+      <img src="assets/img/section2.png" alt="2">
+    </div>
+
+    <div class="section2-right">
+      <h2>Kursant School-да оқудың <br> <span class="highlight">артықшылықтары</span></h2>
+
+      <div class="advantage-item">
+        <div class="icon-circle">
+          <img src="assets/img/teacher-icon.svg" alt="Teacher Icon">
+        </div>
+        <div class="text-content">
+          <h3>Ұстаздар</h3>
+          <p>Бізде жоғары санатты квалификацияланған <br> ұстаздар сабақ береді.</p>
+        </div>
+      </div>
+
+      <div class="advantage-item">
+        <div class="icon-circle">
+          <img src="assets/img/support-icon.svg" alt="Support Icon">
+        </div>
+        <div class="text-content">
+          <h3>ҰБТ қолдау</h3>
+          <p>Оқушы ҰБТ тапсырып шыққанға дейінгі <br> кәсіби әрі психологиялық көмек.</p>
+        </div>
+      </div>
+
+      <div class="advantage-item">
+        <div class="icon-circle">
+          <img src="assets/img/canteen-icon.svg" alt="Canteen Icon">
+        </div>
+        <div class="text-content">
+          <h3>Асхана</h3>
+          <p>Мектептің асханаларында тек қана экологиялық <br> таза әрі пайдалы өнімдер қолданылады.</p>
+        </div>
+      </div>
+
+      <div class="advantage-item">
+        <div class="icon-circle">
+          <img src="assets/img/personal-icon.svg" alt="Personal Approach Icon">
+        </div>
+        <div class="text-content">
+          <h3>Жеке подход</h3>
+          <p>Біз әр оқушыға жеке подходпен қарау <br> тәжірибесін кең пайдаланамыз.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="scrolling-text">
+    <div class="scrolling-text-content">
+      <span>ЖАҢАЛЫҚТАР</span>
+      <span>IC-ШАРАЛАР</span>
+      <span>ЖАҢАЛЫҚТАР</span>
+      <span>IC-ШАРАЛАР</span>
+      <span>ЖАҢАЛЫҚТАР</span>
+      <span>IC-ШАРАЛАР</span>
+      <span>ЖАҢАЛЫҚТАР</span>
+      <span>IC-ШАРАЛАР</span>
+      <span>ЖАҢАЛЫҚТАР</span>
+      <span>IC-ШАРАЛАР</span>
+      <span>ЖАҢАЛЫҚТАР</span>
+      <span>IC-ШАРАЛАР</span>
+      <span>ЖАҢАЛЫҚТАР</span>
+      <span>IC-ШАРАЛАР</span>
+    </div>
+  </div>
+
+  <div class="section_three">
+    <div class="card" *ngFor="let new of news">
+      <img [src]="new.poster" [alt]="new.index">
+      <h3>{{ new.name }}</h3>
+      <p>{{ new.description }}</p>
+      <div class="bottom-spans">
+        <span *ngFor="let tag of new.tags">{{ tag }}</span>
+      </div>
+    </div>
+  </div>
+</div>

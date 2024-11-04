@@ -6,8 +6,12 @@ import {AdminTrustBoxComponent} from './components/admin-pages/admin-trust-box/a
 import {AdminNewsComponent} from './components/admin-pages/admin-news/admin-news.component';
 import {AuthGuard} from './services/auth-service/auth.guard';
 import {AccessDeniedComponent} from './components/helpers/access-denied/access-denied.component';
+import {MainPageComponent} from './components/user-pages/main-page/main-page.component';
 
 export const routes: Routes = [
+  {
+    path: '', component: MainPageComponent
+  },
   {
     path:'admin-login', component:AdminLoginComponent
   },

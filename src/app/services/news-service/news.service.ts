@@ -2,6 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {AuthService} from '../auth-service/auth.service';
 import {Observable} from 'rxjs';
+import {News} from '../../../assets/news.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +16,10 @@ export class NewsService {
   getSchool(): Observable<any> {
     return this.http.get(`${this.userUrl}get_schools/`);
   }
-  getNews(schoolId: number): Observable<any> {
+  getNews(schoolId: number): Observable<News[]> {
 
     const params = { school_id: schoolId.toString() };
-    return this.http.get(`${this.userUrl}get_posts/`, { params });
+    return this.http.get<News[]>(`${this.userUrl}get_posts/`, { params });
   }
 
   getNewsById(id: number | undefined) {
