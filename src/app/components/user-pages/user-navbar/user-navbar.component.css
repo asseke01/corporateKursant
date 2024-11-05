@@ -171,4 +171,14 @@ mat-option {
     }
   }
 
+  @media (max-width: 555px) {
+    .navbar-left {
+      display: none;
+    }
+
+    .nav-btn {
+      display: none;
+    }
+  }
+
 }
