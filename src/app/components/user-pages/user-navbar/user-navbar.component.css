@@ -62,6 +62,20 @@
 
 ::ng-deep .cdk-overlay-container .mat-mdc-select-panel {
   padding: 0;
+  max-height: 100%;
+}
+
+::ng-deep .mat-mdc-option {
+  background-color: white !important;
+}
+
+::ng-deep .mat-mdc-option:hover,
+::ng-deep .mat-mdc-option:focus,
+::ng-deep .mat-mdc-option.mat-mdc-option-selected,
+::ng-deep .mat-mdc-option[aria-selected="true"] {
+  background-color: white !important;
+  color: inherit !important;
+  outline: none !important;
 }
 
 mat-label {
@@ -133,4 +147,17 @@ mat-option {
   border-radius: 5px;
   font-size: 16px;
   border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 1300px) {
+  .navbar-container {
+    padding: 24px 100px;
+  }
+}
+
+@media (max-width: 1175px) {
+  .navbar-container {
+    padding: 24px 50px;
+  }
 }

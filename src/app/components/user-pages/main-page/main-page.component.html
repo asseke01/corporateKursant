@@ -4,7 +4,7 @@
     <div class="section1_left">
       <div class="section_one__header">
         <img src="assets/img/left-bar.svg" alt="left-bar">
-        <h1>Бізбен бірге жарқын болашаққа</h1>
+        <h1><span>Бізбен бірге</span> жарқын болашаққа</h1>
       </div>
       <p>Үздік мектепте оқу мүмкіндігін жіберіп <br> алмаңыз. Оқуға өтінім қалдырыңыз, <br> менеджерлер хабарласады:</p>
       <div class="left-input-btn">
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="section1_right">
-      <img src="assets/img/main-page1.png" alt="1">
+      <img src="assets/img/main-page-icon%201%201.svg" alt="1">
     </div>
   </div>
   <div class="section_two">
@@ -28,43 +28,13 @@
     <div class="section2-right">
       <h2>Kursant School-да оқудың <br> <span class="highlight">артықшылықтары</span></h2>
 
-      <div class="advantage-item">
+      <div class="advantage-item" *ngFor="let artyk of artykshylyktary">
         <div class="icon-circle">
-          <img src="assets/img/teacher-icon.svg" alt="Teacher Icon">
+          <img [src]="artyk.image" alt="Teacher Icon">
         </div>
         <div class="text-content">
-          <h3>Ұстаздар</h3>
-          <p>Бізде жоғары санатты квалификацияланған <br> ұстаздар сабақ береді.</p>
-        </div>
-      </div>
-
-      <div class="advantage-item">
-        <div class="icon-circle">
-          <img src="assets/img/support-icon.svg" alt="Support Icon">
-        </div>
-        <div class="text-content">
-          <h3>ҰБТ қолдау</h3>
-          <p>Оқушы ҰБТ тапсырып шыққанға дейінгі <br> кәсіби әрі психологиялық көмек.</p>
-        </div>
-      </div>
-
-      <div class="advantage-item">
-        <div class="icon-circle">
-          <img src="assets/img/canteen-icon.svg" alt="Canteen Icon">
-        </div>
-        <div class="text-content">
-          <h3>Асхана</h3>
-          <p>Мектептің асханаларында тек қана экологиялық <br> таза әрі пайдалы өнімдер қолданылады.</p>
-        </div>
-      </div>
-
-      <div class="advantage-item">
-        <div class="icon-circle">
-          <img src="assets/img/personal-icon.svg" alt="Personal Approach Icon">
-        </div>
-        <div class="text-content">
-          <h3>Жеке подход</h3>
-          <p>Біз әр оқушыға жеке подходпен қарау <br> тәжірибесін кең пайдаланамыз.</p>
+          <h3>{{ artyk.name }}</h3>
+          <p>{{ artyk.title }}</p>
         </div>
       </div>
 
@@ -90,13 +60,57 @@
   </div>
 
   <div class="section_three">
-    <div class="card" *ngFor="let new of news">
+    <div class="card" *ngFor="let new of (showAllNews ? news : news.slice(0, 3))">
       <img [src]="new.poster" [alt]="new.index">
-      <h3>{{ new.name }}</h3>
-      <p>{{ new.description }}</p>
-      <div class="bottom-spans">
-        <span *ngFor="let tag of new.tags">{{ tag }}</span>
+      <div class="news-bottom">
+        <h3>{{ new.name }}</h3>
+        <p>{{ new.description }}</p>
+        <div class="bottom-spans">
+          <span *ngFor="let tag of new.tags">{{ tag }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="more-news">
+      <button (click)="toggleShowAllNews()">
+        {{ showAllNews ? 'Жасыру' : 'Толық көру' }}
+      </button>
+    </div>
+  </div>
+
+  <div class="section_four">
+    <h3>Әкімшілік пен ұстаздар</h3>
+    <div class="cards">
+      <div class="teachers_card" *ngFor="let teacher of teacherCards">
+        <div class="card_header">
+          <img [src]="teacher.image" alt="teacher">
+          <div class="header-text">
+            <h4>{{ teacher.name }}</h4>
+            <p>{{ teacher.title }}</p>
+          </div>
+        </div>
+        <p class="card-text">{{ teacher.text }}</p>
       </div>
     </div>
   </div>
+
+  <div class="section_five">
+    <img src="assets/img/otinim-image.svg" alt="otinim">
+    <div class="otinim">
+      <h3>Өтінім беру</h3>
+      <p>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</p>
+      <div class="left-input-btn">
+        <input type="text" placeholder="Номер">
+        <button>Өтінім беру</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section_six">
+    <h3>Сенім жәшігі</h3>
+    <p>Мектепте қандай да бір қысым болып, көмек керек болса, төмендегі жолға сипаттаңыз. <br> Хат анонимді түрде
+      жіберіледі.</p>
+    <textarea></textarea>
+    <button>Жіберу</button>
+  </div>
 </div>
+<!--<app-footer></app-footer>-->

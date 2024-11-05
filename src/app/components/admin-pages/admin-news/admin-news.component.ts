@@ -213,7 +213,7 @@ export class AdminNewsComponent implements OnInit{
 
       const tags = this.newsForm.get('tags')?.value as string[];
       if (tags && Array.isArray(tags)) {
-        tags.forEach((tag: string, index: number) => formData.append(`tags[${index}]`, tag));
+        formData.append('tags', JSON.stringify(tags));
       }
 
       this.newsService.saveData(formData).subscribe({

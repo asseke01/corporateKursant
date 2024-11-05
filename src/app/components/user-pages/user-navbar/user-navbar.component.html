@@ -1,13 +1,13 @@
 <div class="navbar-container">
   <div class="navbar-left">
-    <img src="assets/img/navbar-kursant-icon.svg" alt="nav-icon" class="nav-icon">
+    <img src="assets/img/kursant-bilim-icon.svg" alt="nav-icon" class="nav-icon">
 
     <!-- Селект для Жобалар -->
     <mat-form-field appearance="fill" class="select-project">
-      <mat-label>Жобалар</mat-label>
-      <mat-select [(value)]="selectedProject">
+      <mat-label *ngIf="!selectedProject">Жобалар</mat-label>
+      <mat-select [(value)]="selectedProject" (selectionChange)="onProjectChange($event)">
         <mat-select-trigger>
-          {{ selectedProject }}
+          Жобалар
         </mat-select-trigger>
         <mat-option [value]="'Тестант'">
           <div class="project-item">
@@ -32,8 +32,11 @@
 
     <!-- Селект для Мектептер -->
     <mat-form-field appearance="fill" class="select-school">
-      <mat-label>Мектептер</mat-label>
+      <mat-label *ngIf="!selectedSchool">Мектептер</mat-label>
       <mat-select [(value)]="selectedSchool">
+        <mat-select-trigger>
+          Мектептер
+        </mat-select-trigger>
         <mat-option *ngFor="let school of schools" [value]="school">
           {{ school }}
         </mat-option>

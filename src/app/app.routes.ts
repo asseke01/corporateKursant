@@ -7,10 +7,14 @@ import {AdminNewsComponent} from './components/admin-pages/admin-news/admin-news
 import {AuthGuard} from './services/auth-service/auth.guard';
 import {AccessDeniedComponent} from './components/helpers/access-denied/access-denied.component';
 import {MainPageComponent} from './components/user-pages/main-page/main-page.component';
+import {SchoolPageComponent} from './school-page/school-page.component';
 
 export const routes: Routes = [
   {
     path: '', component: MainPageComponent
+  },
+  {
+    path: 'school', component: SchoolPageComponent
   },
   {
     path:'admin-login', component:AdminLoginComponent
