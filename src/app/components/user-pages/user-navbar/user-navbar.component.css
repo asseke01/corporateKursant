@@ -160,4 +160,15 @@ mat-option {
   .navbar-container {
     padding: 24px 50px;
   }
+
+  @media (max-width: 670px) {
+    .navbar-container {
+      padding: 24px 20px;
+    }
+
+    .navbar-left {
+      gap: 20px;
+    }
+  }
+
 }
