@@ -1,116 +1,123 @@
-<app-user-navbar></app-user-navbar>
-<div class="main-page__container">
-  <div class="section_one">
-    <div class="section1_left">
-      <div class="section_one__header">
-        <img src="assets/img/left-bar.svg" alt="left-bar">
-        <h1><span>Бізбен бірге</span> жарқын болашаққа</h1>
-      </div>
-      <p>Үздік мектепте оқу мүмкіндігін жіберіп <br> алмаңыз. Оқуға өтінім қалдырыңыз, <br> менеджерлер хабарласады:</p>
-      <div class="left-input-btn">
-        <input type="text" placeholder="Номер">
-        <button>Өтінім беру</button>
-      </div>
-      <div class="star-arrow-container">
-        <img src="assets/img/star-arrow.svg" alt="arrow" class="star-arrow">
-      </div>
-    </div>
-    <div class="section1_right">
-      <img src="assets/img/main-page-icon%201%201.svg" alt="1">
-    </div>
-  </div>
-  <div class="section_two">
-
-    <div class="section2-left">
-      <img src="assets/img/section2.png" alt="2">
-    </div>
-
-    <div class="section2-right">
-      <h2>Kursant School-да оқудың <br> <span class="highlight">артықшылықтары</span></h2>
-
-      <div class="advantage-item" *ngFor="let artyk of artykshylyktary">
-        <div class="icon-circle">
-          <img [src]="artyk.image" alt="Teacher Icon">
+<app-user-navbar (scrollToSection)="scrollToSectionFive()"></app-user-navbar>
+<form [formGroup]="otinimForm">
+  <div class="main-page__container">
+    <div class="section_one">
+      <div class="section1_left">
+        <div class="section_one__header">
+          <img src="assets/img/left-bar.svg" alt="left-bar">
+          <h1><span>Бізбен бірге</span> жарқын болашаққа</h1>
         </div>
-        <div class="text-content">
-          <h3>{{ artyk.name }}</h3>
-          <p>{{ artyk.title }}</p>
+        <p>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</p>
+        <div class="left-input-btn">
+          <input type="text" formControlName='phone_number' placeholder="Номер +7" [mask]="'(000) 000 00 00'"
+                 prefix="+7 ">
+          <button (click)="makeOrder()">Өтінім беру</button>
+        </div>
+        <div class="star-arrow-container">
+          <img src="assets/img/star-arrow.svg" alt="arrow" class="star-arrow">
         </div>
       </div>
-
-    </div>
-  </div>
-  <div class="scrolling-text">
-    <div class="scrolling-text-content">
-      <span>ЖАҢАЛЫҚТАР</span>
-      <span>IC-ШАРАЛАР</span>
-      <span>ЖАҢАЛЫҚТАР</span>
-      <span>IC-ШАРАЛАР</span>
-      <span>ЖАҢАЛЫҚТАР</span>
-      <span>IC-ШАРАЛАР</span>
-      <span>ЖАҢАЛЫҚТАР</span>
-      <span>IC-ШАРАЛАР</span>
-      <span>ЖАҢАЛЫҚТАР</span>
-      <span>IC-ШАРАЛАР</span>
-      <span>ЖАҢАЛЫҚТАР</span>
-      <span>IC-ШАРАЛАР</span>
-      <span>ЖАҢАЛЫҚТАР</span>
-      <span>IC-ШАРАЛАР</span>
-    </div>
-  </div>
-
-  <div class="section_three">
-    <div class="card" *ngFor="let new of (showAllNews ? news : news.slice(0, 3))">
-      <img [src]="new.poster" [alt]="new.index">
-      <div class="news-bottom">
-        <h3>{{ new.name }}</h3>
-        <p>{{ new.description }}</p>
-        <div class="bottom-spans">
-          <span *ngFor="let tag of new.tags">{{ tag }}</span>
-        </div>
+      <div class="section1_right">
+        <img src="assets/img/main-page-icon%201%201.svg" alt="1">
       </div>
     </div>
-    <div class="more-news">
-      <button (click)="toggleShowAllNews()">
-        {{ showAllNews ? 'Жасыру' : 'Толық көру' }}
-      </button>
-    </div>
-  </div>
+    <div class="section_two">
 
-  <div class="section_four">
-    <h3>Әкімшілік пен ұстаздар</h3>
-    <div class="cards">
-      <div class="teachers_card" *ngFor="let teacher of teacherCards">
-        <div class="card_header">
-          <img [src]="teacher.image" alt="teacher">
-          <div class="header-text">
-            <h4>{{ teacher.name }}</h4>
-            <p>{{ teacher.title }}</p>
+      <div class="section2-left">
+        <img src="assets/img/section2.png" alt="2">
+      </div>
+
+      <div class="section2-right">
+        <h2>Kursant School-да оқудың <br> <span class="highlight">артықшылықтары</span></h2>
+
+        <div class="advantage-item" *ngFor="let artyk of artykshylyktary">
+          <div class="icon-circle">
+            <img [src]="artyk.image" alt="Teacher Icon">
+          </div>
+          <div class="text-content">
+            <h3>{{ artyk.name }}</h3>
+            <p>{{ artyk.title }}</p>
           </div>
         </div>
-        <p class="card-text">{{ teacher.text }}</p>
+
       </div>
     </div>
-  </div>
-
-  <div class="section_five">
-    <img src="assets/img/otinim-image.svg" alt="otinim">
-    <div class="otinim">
-      <h3>Өтінім беру</h3>
-      <p>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</p>
-      <div class="left-input-btn">
-        <input type="text" placeholder="Номер">
-        <button>Өтінім беру</button>
+    <div class="scrolling-text">
+      <div class="scrolling-text-content">
+        <span>ЖАҢАЛЫҚТАР</span>
+        <span>IC-ШАРАЛАР</span>
+        <span>ЖАҢАЛЫҚТАР</span>
+        <span>IC-ШАРАЛАР</span>
+        <span>ЖАҢАЛЫҚТАР</span>
+        <span>IC-ШАРАЛАР</span>
+        <span>ЖАҢАЛЫҚТАР</span>
+        <span>IC-ШАРАЛАР</span>
+        <span>ЖАҢАЛЫҚТАР</span>
+        <span>IC-ШАРАЛАР</span>
+        <span>ЖАҢАЛЫҚТАР</span>
+        <span>IC-ШАРАЛАР</span>
+        <span>ЖАҢАЛЫҚТАР</span>
+        <span>IC-ШАРАЛАР</span>
       </div>
     </div>
-  </div>
 
-  <div class="section_six">
-    <h3>Сенім жәшігі</h3>
-    <p>Мектепте қандай да бір қысым болып, көмек керек болса, төмендегі жолға сипаттаңыз. <br> Хат анонимді түрде
-      жіберіледі.</p>
-    <textarea></textarea>
-    <button>Жіберу</button>
+    <div class="section_three">
+      <div class="card" *ngFor="let new of (showAllNews ? news : news.slice(0, 3))">
+        <img [src]="new.poster" [alt]="new.index">
+        <div class="news-bottom">
+          <h3>{{ new.name }}</h3>
+          <p>{{ new.description }}</p>
+          <div class="bottom-spans">
+            <span *ngFor="let tag of new.tags">{{ tag }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="more-news">
+        <button (click)="toggleShowAllNews()">
+          {{ showAllNews ? 'Жасыру' : 'Толық көру' }}
+        </button>
+      </div>
+    </div>
+
+    <div class="section_four">
+      <h3>Әкімшілік пен ұстаздар</h3>
+      <div class="cards">
+        <div class="teachers_card" *ngFor="let teacher of teacherCards">
+          <div class="card_header">
+            <img [src]="teacher.image" alt="teacher">
+            <div class="header-text">
+              <h4>{{ teacher.name }}</h4>
+              <p>{{ teacher.title }}</p>
+            </div>
+          </div>
+          <p class="card-text">{{ teacher.text }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section_five" id="section_five">
+      <img src="assets/img/otinim-image.svg" alt="otinim">
+      <div class="otinim">
+        <h3>Өтінім беру</h3>
+        <p>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</p>
+        <div class="left-input-btn">
+          <input type="text" formControlName='phone_number' placeholder="Номер +7" [mask]="'(000) 000 00 00'"
+                 prefix="+7 ">
+          <button (click)="makeOrder()">Өтінім беру</button>
+        </div>
+      </div>
+    </div>
+
+    <form [formGroup]="trustBoxForm">
+      <div class="section_six">
+        <h3>Сенім жәшігі</h3>
+        <p>Мектепте қандай да бір қысым болып, көмек керек болса, төмендегі жолға сипаттаңыз. <br> Хат анонимді түрде
+          жіберіледі.</p>
+        <textarea formControlName="text"></textarea>
+        <button (click)="makeMessage()">Жіберу</button>
+      </div>
+    </form>
+
   </div>
-</div>
+</form>
 <app-footer></app-footer>

@@ -1,10 +1,12 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, ElementRef, inject, OnInit, ViewChild} from '@angular/core';
 import {UserNavbarComponent} from '../user-navbar/user-navbar.component';
 import {ActivatedRoute} from '@angular/router';
 import {FooterComponent} from '../footer/footer.component';
 import {NgForOf} from '@angular/common';
 import {NewsService} from '../../../services/news-service/news.service';
 import {News} from '../../../../assets/news.interface';
+import {NgxMaskDirective} from 'ngx-mask';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-school-page',
@@ -12,12 +14,17 @@ import {News} from '../../../../assets/news.interface';
   imports: [
     UserNavbarComponent,
     FooterComponent,
-    NgForOf
+    NgForOf,
+    NgxMaskDirective,
+    ReactiveFormsModule
   ],
   templateUrl: './school-page.component.html',
   styleUrl: './school-page.component.css'
 })
 export class SchoolPageComponent implements OnInit {
+
+  @ViewChild('sectionFive') sectionFive!: ElementRef;
+
   public schoolName: string | null = null;
 
   constructor(private route: ActivatedRoute) {
@@ -74,5 +81,12 @@ export class SchoolPageComponent implements OnInit {
 
   public toggleShowAllNews() {
     this.showAllNews = !this.showAllNews;
+  }
+
+  public scrollToSectionFive(): void {
+    const sectionFiveElement = document.getElementById('section_five');
+    if (sectionFiveElement) {
+      sectionFiveElement.scrollIntoView({behavior: 'smooth'});
+    }
   }
 }

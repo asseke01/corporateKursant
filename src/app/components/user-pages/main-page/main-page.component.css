@@ -27,6 +27,7 @@
 }
 
 .section1_left p {
+  max-width: 350px;
   font-size: clamp(12px, 5vw, 17px);
   font-family: Gilroy-Regular, sans-serif;
 }

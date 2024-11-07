@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, EventEmitter, HostListener, inject, Output} from '@angular/core';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption, MatSelect, MatSelectTrigger} from '@angular/material/select';
 import {NgForOf, NgIf} from '@angular/common';
@@ -23,20 +23,24 @@ import {Router} from '@angular/router';
 })
 export class UserNavbarComponent {
 
-  private router = inject(Router);
+  @Output() scrollToSection = new EventEmitter<void>();
 
+  private router = inject(Router);
 
   public selectedProject: string | undefined;
   public selectedSchool: string | undefined;
   public schools = ['Алмалыбақ', 'Қаскелең'];
+  public isMenuOpen = false;
 
-  isMenuOpen = false;
+  public scrollToSectionFive() {
+    this.scrollToSection.emit();
+  }
 
-  toggleMenu() {
+  public toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  onProjectChange(event: any): void {
+  public onProjectChange(event: any): void {
     const project = event.value;
     if (project === 'Тестант') {
       window.open('https://testant.kz/', '_blank');
@@ -45,13 +49,25 @@ export class UserNavbarComponent {
     }
   }
 
-  onSchoolChange(event: any): void {
+  public onSchoolChange(event: any): void {
     const school = event.value;
     this.router.navigate(['/school', school]); // Navigate to school route with school name as parameter
   }
 
-  backToMain() {
+  public backToMain() {
     this.router.navigate(['']);
+  }
+
+  @HostListener('document:click', ['$event'])
+  public onClickOutside(event: Event) {
+    const target = event.target as HTMLElement;
+    if (this.isMenuOpen && !target.closest('.sidebar') && !target.closest('.burger-menu')) {
+      this.closeMenu();
+    }
+  }
+
+  public closeMenu() {
+    this.isMenuOpen = false;
   }
 
 }

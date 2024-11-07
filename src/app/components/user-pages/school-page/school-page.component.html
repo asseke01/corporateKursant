@@ -1,4 +1,4 @@
-<app-user-navbar></app-user-navbar>
+<app-user-navbar (scrollToSection)="scrollToSectionFive()"></app-user-navbar>
 <div class="main-page__container">
   <div class="section_one">
     <div class="section1_left">
@@ -10,9 +10,9 @@
         <img src="assets/img/location.svg" alt="location">
         <p>Қаскелең, Қонаев к., №123</p>
       </div>
-      <p>Үздік мектепте оқу мүмкіндігін жіберіп <br> алмаңыз. Оқуға өтінім қалдырыңыз, <br> менеджерлер хабарласады:</p>
+      <p>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</p>
       <div class="left-input-btn">
-        <input type="text" placeholder="Номер">
+        <input type="text" placeholder="Номер +7" [mask]="'(000) 000 00 00'" prefix="+7 ">
         <button>Өтінім беру</button>
       </div>
       <div class="star-arrow-container">
@@ -73,13 +73,13 @@
     </div>
   </div>
 
-  <div class="section_five">
+  <div class="section_five" id="section_five">
     <img src="assets/img/otinim-image.svg" alt="otinim">
     <div class="otinim">
       <h3>Өтінім беру</h3>
       <p>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</p>
       <div class="left-input-btn">
-        <input type="text" placeholder="Номер">
+        <input type="text" placeholder="Номер +7" [mask]="'(000) 000 00 00'" prefix="+7 ">
         <button>Өтінім беру</button>
       </div>
     </div>

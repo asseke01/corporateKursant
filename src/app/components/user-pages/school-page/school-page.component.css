@@ -27,6 +27,7 @@
 }
 
 .section1_left p {
+  max-width: 350px;
   font-size: clamp(12px, 5vw, 17px);
   font-family: Gilroy-Regular, sans-serif;
 }
@@ -112,7 +113,7 @@
 
 .scrolling-text-content {
   display: inline-flex;
-  gap: 61px; /* Расстояние между словами */
+  gap: 30px; /* Расстояние между словами */
   animation: scroll 20s linear infinite;
 }
 
@@ -395,6 +396,10 @@
 
 @media (max-width: 920px) {
   .main-page__container {
+    gap: 50px;
+  }
+
+  .section_one {
     gap: 50px;
   }
 

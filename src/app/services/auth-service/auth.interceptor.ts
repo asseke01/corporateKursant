@@ -4,7 +4,8 @@ import { AuthService } from './auth.service';
 
 const AUTH_URLS = [
   '/api/news/get_posts/',
-  // 'api/employee/login/'
+  '/api/order/make_order/',
+  '/api/trust_box/make_message/',
 ];
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {

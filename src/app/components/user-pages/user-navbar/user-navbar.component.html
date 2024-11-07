@@ -8,7 +8,6 @@
 
     <img src="assets/img/kursant-bilim-icon.svg" alt="nav-icon" class="nav-icon" (click)="backToMain()">
 
-    <!-- Селекты для проекта и школы -->
     <mat-form-field appearance="fill" class="select-project">
       <mat-label *ngIf="!selectedProject">Жобалар</mat-label>
       <mat-select [(value)]="selectedProject" (selectionChange)="onProjectChange($event)">
@@ -45,10 +44,11 @@
     </mat-form-field>
   </div>
 
-  <button class="nav-btn">Өтінім беру</button>
+  <button class="nav-btn" (click)="scrollToSectionFive()">Өтінім беру</button>
 </div>
 
-<!-- Сайдбар с селектами -->
+<div class="overlay" *ngIf="isMenuOpen" (click)="closeMenu()"></div>
+
 <div class="sidebar" *ngIf="isMenuOpen">
   <mat-form-field appearance="fill" class="select-project">
     <mat-label *ngIf="!selectedProject">Жобалар</mat-label>
