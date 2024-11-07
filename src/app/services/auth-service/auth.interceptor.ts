@@ -12,7 +12,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
   const authToken = authService.getToken();
 
-  // Проверяем, содержит ли URL запроса один из путей в AUTH_URLS
   const isAuthUrl = AUTH_URLS.some(url => req.url.includes(url));
 
   if (authToken && !isAuthUrl) {

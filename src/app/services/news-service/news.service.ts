@@ -3,13 +3,14 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {AuthService} from '../auth-service/auth.service';
 import {Observable} from 'rxjs';
 import {News} from '../../../assets/news.interface';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewsService {
   private http = inject(HttpClient)
-  private userUrl = 'http://127.0.0.1:8000/api/news/';
+  private userUrl = environment.apiUrl + '/api/news/';
   private authService = inject(AuthService);
   constructor() { }
 
