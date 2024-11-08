@@ -5,11 +5,21 @@
 }
 
 .footer-container {
-  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   height: 384px;
+  display: flex;
+  align-items: center;
   background-color: #212121;
-  padding: 79px 162px;
 }
+
+.full-width-wrapper {
+  width: 99.2vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .footer-content {
   color: white;
   display: flex;

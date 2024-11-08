@@ -1,25 +1,30 @@
 <app-user-navbar></app-user-navbar>
-<div class="main-page__container">
-  <div class="section_one">
-    <div class="section1_left">
-      <div class="section_one__header">
-        <img src="assets/img/left-bar.svg" alt="left-bar">
-        <h1><span>Бізбен бірге</span> жарқын болашаққа</h1>
+<div class="main-page__container ">
+
+  <div class="container section">
+    <div class="section_one ">
+      <div class="section1_left ">
+        <div class="section_one__header">
+          <img src="assets/img/left-bar.svg" alt="left-bar">
+          <h1><span>Бізбен бірге</span> жарқын болашаққа</h1>
+        </div>
+        <p>Үздік мектепте оқу мүмкіндігін жіберіп <br> алмаңыз. Оқуға өтінім қалдырыңыз, <br> менеджерлер хабарласады:</p>
+        <div class="left-input-btn">
+          <input type="text" placeholder="Номер">
+          <button>Өтінім беру</button>
+        </div>
+        <div class="star-arrow-container">
+          <img src="assets/img/star-arrow.svg" alt="arrow" class="star-arrow">
+        </div>
       </div>
-      <p>Үздік мектепте оқу мүмкіндігін жіберіп <br> алмаңыз. Оқуға өтінім қалдырыңыз, <br> менеджерлер хабарласады:</p>
-      <div class="left-input-btn">
-        <input type="text" placeholder="Номер">
-        <button>Өтінім беру</button>
+      <div class="section1_right">
+        <img src="assets/img/main-page-icon%201%201.svg" alt="1">
       </div>
-      <div class="star-arrow-container">
-        <img src="assets/img/star-arrow.svg" alt="arrow" class="star-arrow">
-      </div>
-    </div>
-    <div class="section1_right">
-      <img src="assets/img/main-page-icon%201%201.svg" alt="1">
     </div>
   </div>
-  <div class="section_two">
+
+
+  <div class="section_two container section">
 
     <div class="section2-left">
       <img src="assets/img/section2.png" alt="2">
@@ -40,7 +45,9 @@
 
     </div>
   </div>
-  <div class="scrolling-text">
+
+
+  <div class="scrolling-text section">
     <div class="scrolling-text-content">
       <span>ЖАҢАЛЫҚТАР</span>
       <span>IC-ШАРАЛАР</span>
@@ -59,7 +66,7 @@
     </div>
   </div>
 
-  <div class="section_three">
+  <div class="section_three container section">
     <div class="card" *ngFor="let new of (showAllNews ? news : news.slice(0, 3))">
       <img [src]="new.poster" [alt]="new.index">
       <div class="news-bottom">
@@ -77,7 +84,7 @@
     </div>
   </div>
 
-  <div class="section_four">
+  <div class="section_four section">
     <h3>Әкімшілік пен ұстаздар</h3>
     <div class="cards">
       <div class="teachers_card" *ngFor="let teacher of teacherCards">
@@ -93,7 +100,7 @@
     </div>
   </div>
 
-  <div class="section_five">
+  <div class="section_five container section">
     <img src="assets/img/otinim-image.svg" alt="otinim">
     <div class="otinim">
       <h3>Өтінім беру</h3>
@@ -105,12 +112,49 @@
     </div>
   </div>
 
-  <div class="section_six">
-    <h3>Сенім жәшігі</h3>
-    <p>Мектепте қандай да бір қысым болып, көмек керек болса, төмендегі жолға сипаттаңыз. <br> Хат анонимді түрде
-      жіберіледі.</p>
-    <textarea></textarea>
-    <button>Жіберу</button>
+  <section class="section-box ">
+    <div class="section_six">
+      <div class="six-info">
+        <h3>Сенім жәшігі</h3>
+        <p>Мектепте қандай да бір қысым болып, көмек керек болса, төмендегі жолға сипаттаңыз. <br> Хат анонимді түрде
+          жіберіледі.</p>
+        <textarea></textarea>
+        <button>Жіберу</button>
+      </div>
+
+    </div>
+  </section>
+
   </div>
-</div>
-<app-footer></app-footer>
+
+
+<section class="footer">
+  <div class="footer-container">
+    <div class="footer-details">
+      <div class="logo-section">
+        <img src="assets/img/footer-icon.svg" alt="footer">
+      </div>
+      <div class="projects-contacts">
+        <div class="projects">
+          <h2>Жобалар</h2>
+          <p>TestAnt</p>
+          <p>KursAnt Online</p>
+        </div>
+        <div class="contacts">
+          <h2>Контактілер</h2>
+          <p>+7 777 777 7777</p>
+          <p>sefdуgmail.com</p>
+        </div>
+      </div>
+      <div class="schools">
+        <h2>Мектептер</h2>
+        <p>Алмалыбақ</p>
+        <p>Қаскелең</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
