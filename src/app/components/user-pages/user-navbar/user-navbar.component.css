@@ -4,11 +4,14 @@
   box-sizing: border-box;
 }
 
+.navbar{
+  border-bottom: 2px solid #EDEDED;
+}
+
 .navbar-container {
   max-width:1200px;
   margin:0 auto;
   height: 81px;
-  /*border-bottom: 2px solid #EDEDED;*/
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,8 +22,11 @@
 .navbar-left {
   display: flex;
   align-items: center;
-  gap: 40px;
+  justify-content: center;
+  gap: 20px;
 }
+
+
 
 .nav-icon {
   width: 118px;
