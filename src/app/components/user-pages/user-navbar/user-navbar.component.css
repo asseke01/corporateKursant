@@ -158,6 +158,9 @@ mat-option {
   cursor: pointer;
 }
 
+
+
+
 @media (max-width: 1024px) {
   .navbar-container {
     padding: 0 10px;
@@ -179,17 +182,72 @@ mat-option {
 }
 
 @media (max-width: 768px) {
-  .navbar-container {
+
+  .burger-menu {
+    display: flex;
     flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .burger-menu .bar {
+    width: 24px;
+    height: 3px;
+    background-color: #333;
+    transition: 0.3s;
+  }
+
+  .burger-active .bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .burger-active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger-active .bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 6;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar-active {
+    transform: translateX(0);
+  }
+
+  .navbar-container {
+    padding: 10px;
     height: auto;
   }
-  .navbar-left {
-    flex-direction: column;
-    gap: 10px;
+  .select-project {
+    display: none;
   }
-  .nav-btn {
-    width: 100%;
-    text-align: center;
+  .select-school {
+    display: none;
+
   }
 }
 
@@ -197,18 +255,5 @@ mat-option {
   .navbar-container {
     padding: 0 8px;
   }
-  .navbar-left {
-    gap: 8px;
-  }
-  .nav-icon {
-    width: 80px;
-    height: 25px;
-  }
-  .nav-btn {
-    font-size: 12px;
-    padding: 10px 14px;
-  }
-  ::ng-deep .mat-mdc-form-field-infix {
-    width: 80px !important;
-  }
+
 }
