@@ -1,9 +1,14 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, ElementRef, inject, OnInit, ViewChild} from '@angular/core';
 import {UserNavbarComponent} from '../user-navbar/user-navbar.component';
 import {NewsService} from '../../../services/news-service/news.service';
 import {News} from '../../../../assets/news.interface';
 import {NgForOf} from '@angular/common';
 import {FooterComponent} from '../footer/footer.component';
+import {NgxMaskDirective} from 'ngx-mask';
+import {OrderService} from '../../../services/order-service/order.service';
+import {AlertService} from '../../../services/alert-service/alert.service';
+import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TrustBoxService} from '../../../services/trust-box/trust-box.service';
 
 @Component({
   selector: 'app-main-page',
@@ -11,12 +16,17 @@ import {FooterComponent} from '../footer/footer.component';
   imports: [
     UserNavbarComponent,
     NgForOf,
-    FooterComponent
+    FooterComponent,
+    NgxMaskDirective,
+    FormsModule,
+    ReactiveFormsModule
   ],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.css'
 })
 export class MainPageComponent implements OnInit {
+
+  @ViewChild('sectionFive') sectionFive!: ElementRef;
 
   public teacherCards: any = [
     {
@@ -67,9 +77,23 @@ export class MainPageComponent implements OnInit {
   ]
 
   private newsService = inject(NewsService);
+  private orderService = inject(OrderService);
+  private alertService = inject(AlertService);
+  private trustBoxService = inject(TrustBoxService);
 
   public news: News[] = []
   public showAllNews: boolean = false;
+  public phoneNumber: string = '';
+  private form = inject(FormBuilder);
+
+
+  public otinimForm = this.form.group({
+    phone_number: ['', [Validators.required, Validators.pattern(/^7\d{9}$/)]],
+  })
+
+  public trustBoxForm = this.form.group({
+    text: ['', Validators.required],
+  });
 
 
   ngOnInit() {
@@ -88,4 +112,55 @@ export class MainPageComponent implements OnInit {
   public toggleShowAllNews() {
     this.showAllNews = !this.showAllNews;
   }
+
+  public scrollToSectionFive(): void {
+    const sectionFiveElement = document.getElementById('section_five');
+    if (sectionFiveElement) {
+      sectionFiveElement.scrollIntoView({behavior: 'smooth'});
+    }
+  }
+
+  public makeOrder(): void {
+    if (this.otinimForm.valid) {
+      let phone = this.otinimForm.get('phone_number')?.value;
+
+      if (phone) {
+        phone = phone.replace(/\D/g, '');
+        phone = `+7 (${phone.slice(0, 3)}) ${phone.slice(3, 6)} ${phone.slice(6, 8)} ${phone.slice(8, 10)}`;
+      }
+
+      const formData = {phone_number: phone};
+
+      this.orderService.makeOrder(formData).subscribe({
+        next: () => {
+          this.alertService.success('Өтінім сәтті жіберілді!');
+          this.otinimForm.reset(); // Clear the form after successful submission
+        },
+        error: () => {
+          this.alertService.error('Өтінімді жіберу кезінде қате орын алды. Қайталап көріңіз.');
+        }
+      });
+    } else {
+      this.alertService.warn('Телефон нөмірін енгізіңіз.');
+    }
+  }
+
+  public makeMessage(): void {
+    if (this.trustBoxForm.valid) {
+      const message = this.trustBoxForm.get('text')?.value;
+
+      this.trustBoxService.makeMessage({text: message}).subscribe({
+        next: () => {
+          this.alertService.success('Хабарлама сәтті жіберілді!');
+          this.trustBoxForm.reset();
+        },
+        error: () => {
+          this.alertService.error('Хабарламаны жіберу кезінде қате орын алды. Қайталап көріңіз.');
+        }
+      });
+    } else {
+      this.alertService.warn('Хабарламаны жазыңыз.');
+    }
+  }
+
 }

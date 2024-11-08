@@ -4,14 +4,14 @@ import { AuthService } from './auth.service';
 
 const AUTH_URLS = [
   '/api/news/get_posts/',
-  // 'api/employee/login/'
+  '/api/order/make_order/',
+  '/api/trust_box/make_message/',
 ];
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
   const authToken = authService.getToken();
 
-  // Проверяем, содержит ли URL запроса один из путей в AUTH_URLS
   const isAuthUrl = AUTH_URLS.some(url => req.url.includes(url));
 
   if (authToken && !isAuthUrl) {
