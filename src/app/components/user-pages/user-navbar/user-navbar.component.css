@@ -150,8 +150,8 @@ mat-option {
   align-items: center;
   padding: 16px 22px;
   height: 43px;
-  background-color: #002E48;
-  color: #ffffff;
+  background: linear-gradient(90deg, #6ADAFF 0%, #00B0EA 100%);
+  color: black;
   border-radius: 5px;
   font-size: 16px;
   border: none;
