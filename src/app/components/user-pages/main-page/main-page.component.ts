@@ -26,7 +26,6 @@ import {TrustBoxService} from '../../../services/trust-box/trust-box.service';
 })
 export class MainPageComponent implements OnInit {
 
-  @ViewChild('sectionFive') sectionFive!: ElementRef;
 
   public teacherCards: any = [
     {
@@ -134,7 +133,7 @@ export class MainPageComponent implements OnInit {
       this.orderService.makeOrder(formData).subscribe({
         next: () => {
           this.alertService.success('Өтінім сәтті жіберілді!');
-          this.otinimForm.reset(); // Clear the form after successful submission
+          this.otinimForm.reset();
         },
         error: () => {
           this.alertService.error('Өтінімді жіберу кезінде қате орын алды. Қайталап көріңіз.');

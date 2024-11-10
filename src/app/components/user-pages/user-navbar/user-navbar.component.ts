@@ -26,10 +26,10 @@ export class UserNavbarComponent {
   @Output() scrollToSection = new EventEmitter<void>();
 
   private router = inject(Router);
-
-  public selectedProject: string | undefined;
-  public selectedSchool: string | undefined;
-  public schools = ['Алмалыбақ', 'Қаскелең'];
+  isDropdownOpen = false;
+  isSchoolDropdownOpen = false;
+  isSidebarDropdownOpen = false;
+  isSidebarSchoolDropdownOpen = false;
   public isMenuOpen = false;
 
   public scrollToSectionFive() {
@@ -38,36 +38,62 @@ export class UserNavbarComponent {
 
   public toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+
+    if (this.isMenuOpen) {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
   }
 
-  public onProjectChange(event: any): void {
-    const project = event.value;
-    if (project === 'Тестант') {
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+    this.isSchoolDropdownOpen=false;
+  }
+
+  toggleSchoolDropdown() {
+    this.isSchoolDropdownOpen= !this.isSchoolDropdownOpen;
+    this.isDropdownOpen=false;
+  }
+
+  toggleSidebarDropdown() {
+    this.isSidebarDropdownOpen = !this.isSidebarDropdownOpen;
+    this.isSidebarSchoolDropdownOpen = false;
+  }
+
+  toggleSidebarSchoolDropdown() {
+    this.isSidebarSchoolDropdownOpen = !this.isSidebarSchoolDropdownOpen;
+    this.isSidebarDropdownOpen = false;
+  }
+
+  public onProjectChange(school:string): void {
+    const project = school;
+    if (project === 'testant') {
       window.open('https://testant.kz/', '_blank');
-    } else if (project === 'Курсант') {
+    } else if (project === 'kursant') {
       window.open('https://www.kursant.kz/', '_blank');
     }
   }
 
-  public onSchoolChange(event: any): void {
-    const school = event.value;
-    this.router.navigate(['/school', school]); // Navigate to school route with school name as parameter
+  public onSchoolChange(name:string): void {
+    this.router.navigate(['/school', name]);
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
   }
 
   public backToMain() {
     this.router.navigate(['']);
   }
 
-  @HostListener('document:click', ['$event'])
-  public onClickOutside(event: Event) {
-    const target = event.target as HTMLElement;
-    if (this.isMenuOpen && !target.closest('.sidebar') && !target.closest('.burger-menu')) {
-      this.closeMenu();
-    }
-  }
 
   public closeMenu() {
     this.isMenuOpen = false;
+    this.isSidebarDropdownOpen=false;
+    this.isSidebarSchoolDropdownOpen=false;
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
   }
 
 }

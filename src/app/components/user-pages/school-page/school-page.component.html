@@ -1,7 +1,7 @@
 <app-user-navbar (scrollToSection)="scrollToSectionFive()"></app-user-navbar>
-<div class="main-page__container">
-  <div class="section_one">
-    <div class="section1_left">
+<div class="main-page__container ">
+  <div class="section_one container">
+    <div class="section1_left ">
       <div class="section_one__header">
         <img src="assets/img/left-bar.svg" alt="left-bar">
         <h1><span>КурсАнт</span> {{ schoolName }} мектебі</h1>
@@ -23,7 +23,7 @@
       <img src="assets/img/school-page-iocn.svg" alt="1">
     </div>
   </div>
-  <div class="section_two">
+  <div class="section_two container">
     <div class="scrolling-text">
       <div class="scrolling-text-content">
         <span><img src="assets/img/image%20(1).svg" alt="1"></span>
@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <div class="section_three">
+  <div class="section_three ">
     <div class="card" *ngFor="let new of (showAllNews ? news : news.slice(0, 3))">
       <img [src]="new.poster" [alt]="new.index">
       <div class="news-bottom">
@@ -57,40 +57,75 @@
     </div>
   </div>
 
-  <div class="section_four">
-    <h3>Әкімшілік пен ұстаздар</h3>
-    <div class="cards">
-      <div class="teachers_card" *ngFor="let teacher of teacherCards">
-        <div class="card_header">
-          <img [src]="teacher.image" alt="teacher">
-          <div class="header-text">
-            <h4>{{ teacher.name }}</h4>
-            <p>{{ teacher.title }}</p>
+  <section class="four">
+    <div class="section_four container">
+      <h3>Әкімшілік пен ұстаздар</h3>
+      <div class="cards">
+        <div class="teachers_card" *ngFor="let teacher of teacherCards">
+          <div class="card_header">
+            <img [src]="teacher.image" alt="teacher">
+            <div class="header-text">
+              <h4>{{ teacher.name }}</h4>
+              <p>{{ teacher.title }}</p>
+            </div>
           </div>
+          <p class="card-text">{{ teacher.text }}</p>
         </div>
-        <p class="card-text">{{ teacher.text }}</p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="section_five" id="section_five">
-    <img src="assets/img/otinim-image.svg" alt="otinim">
-    <div class="otinim">
-      <h3>Өтінім беру</h3>
-      <p>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</p>
-      <div class="left-input-btn">
-        <input type="text" placeholder="Номер +7" [mask]="'(000) 000 00 00'" prefix="+7 ">
-        <button>Өтінім беру</button>
+
+  <section>
+    <div class="section_five container" id="section_five">
+      <img src="assets/img/otinim-image.svg" alt="otinim">
+      <div class="otinim">
+        <h3>Өтінім беру</h3>
+        <p>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</p>
+        <div class="left-input-btn">
+          <input type="text" placeholder="Номер +7" [mask]="'(000) 000 00 00'" prefix="+7 ">
+          <button>Өтінім беру</button>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="section_six">
-    <h3>Сенім жәшігі</h3>
-    <p>Мектепте қандай да бір қысым болып, көмек керек болса, төмендегі жолға сипаттаңыз. <br> Хат анонимді түрде
-      жіберіледі.</p>
-    <textarea></textarea>
-    <button>Жіберу</button>
-  </div>
+
+  <section class="six">
+    <div class="section_six container">
+      <h3>Сенім жәшігі</h3>
+      <p>Мектепте қандай да бір қысым болып, көмек керек болса, төмендегі жолға сипаттаңыз. <br> Хат анонимді түрде
+        жіберіледі.</p>
+      <textarea></textarea>
+      <button>Жіберу</button>
+    </div>
+  </section>
+
 </div>
-<app-footer></app-footer>
+
+<section class="footer">
+  <div class="footer-container">
+    <div class="footer-details">
+      <div class="logo-section">
+        <img src="assets/img/footer-icon.svg" alt="footer">
+      </div>
+      <div class="projects-contacts">
+        <div class="projects">
+          <h2>Жобалар</h2>
+          <p>TestAnt</p>
+          <p>KursAnt Online</p>
+        </div>
+        <div class="contacts">
+          <h2>Контактілер</h2>
+          <p>+7 777 777 7777</p>
+          <p>sefdуgmail.com</p>
+        </div>
+      </div>
+      <div class="schools">
+        <h2>Мектептер</h2>
+        <p>Алмалыбақ</p>
+        <p>Қаскелең</p>
+      </div>
+    </div>
+  </div>
+</section>

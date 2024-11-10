@@ -1,7 +1,7 @@
 <section class="navbar">
   <div class="navbar-container">
     <div class="navbar-left">
-      <img src="assets/img/kursant-bilim-icon.svg" alt="nav-icon" class="nav-icon" (click)="backToMain()">
+
 
       <div class="burger-menu" [class.burger-active]="isMenuOpen" (click)="toggleMenu()">
         <div class="bar"></div>
@@ -9,42 +9,59 @@
         <div class="bar"></div>
       </div>
 
+      <img src="assets/img/kursant-bilim-icon.svg" alt="nav-icon" class="nav-icon" (click)="backToMain()">
 
 
-      <mat-form-field appearance="fill" class="select-project">
-        <mat-label *ngIf="!selectedProject">Жобалар</mat-label>
-        <mat-select [(value)]="selectedProject" (selectionChange)="onProjectChange($event)">
-          <mat-select-trigger>Жобалар</mat-select-trigger>
-          <mat-option [value]="'Тестант'">
-            <div class="project-item">
-              <img src="assets/img/testant-nav-icon.svg" alt="TestAnt Icon" class="item-icon">
-              <span class="project-title">Пәндік және толық ҰБТ бойынша онлайн тестілеу жүйесі.</span>
+      <div class="dropdown" [class.active]="isDropdownOpen" (click)="toggleDropdown()">
+        <div class="dropdown-header">
+          <span>Жобалар</span>
+          <span class="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
+        </div>
+
+
+        <div class="dropdown-menu" *ngIf="isDropdownOpen">
+          <div class="dropdown-item" (click)="onProjectChange('testant')">
+            <img src="assets/img/testant-nav-icon.svg" alt="TestAnt Icon" class="item-icon" />
+            <div class="item-content" style="margin-bottom: 10px">
+              <p>Пәндік және толық ҰБТ бойынша онлайн тестілеу жүйесі.</p>
             </div>
-          </mat-option>
-          <mat-option [value]="'Курсант'">
-            <div class="option">
-              <div class="project-item">
-                <img src="assets/img/kursant-nav-icon.svg" alt="KursAnt Icon" class="item-icon">
-                <span class="project-title">Пәндік және толық ҰБТ бойынша онлайн тестілеу жүйесі.</span>
-              </div>
-              <div class="option-info">
-                <img src="assets/img/navbar-info-icon.svg" alt="info">
-                <p>КурсАнт IT экожүйесінің құрамы</p>
-              </div>
+          </div>
+          <div class="dropdown-item" (click)="onProjectChange('kursant')">
+            <img src="assets/img/kursant-nav-icon.svg" alt="KursAnt Icon" class="item-icon" />
+            <div class="item-content">
+              <p>Пәндік және толық ҰБТ бойынша онлайн тестілеу жүйесі.</p>
             </div>
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+          </div>
+          <div class="dropdown-footer">
+            <div class="footer-icon"><img src="assets/img/navbar-info-icon.svg"></div>
+            <span>КурсАнт IT экожүйесінің құрамы</span>
+          </div>
+        </div>
+      </div>
 
-      <mat-form-field appearance="fill" class="select-school">
-        <mat-label *ngIf="!selectedSchool">Мектептер</mat-label>
-        <mat-select [(value)]="selectedSchool" (selectionChange)="onSchoolChange($event)">
-          <mat-select-trigger>Мектептер</mat-select-trigger>
-          <mat-option *ngFor="let school of schools" [value]="school">
-            {{ school }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <div class="dropdown" [class.active]="isSchoolDropdownOpen" (click)="toggleSchoolDropdown()">
+        <div class="dropdown-header" >
+          <span>Мектептер</span>
+          <span class="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
+        </div>
+
+
+        <div class="dropdown-school-menu" *ngIf="isSchoolDropdownOpen">
+          <div class="dropdown-school-item" (click)="onSchoolChange('Алмалыбақ')">
+            <div class="item-content" style="margin-bottom: 10px">
+              <p>Алмалыбақ</p>
+            </div>
+          </div>
+          <div class="dropdown-school-item">
+            <div class="item-content" (click)="onSchoolChange('Қаскелең')">
+              <p>Қаскелең</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
     </div>
 
     <button class="nav-btn" (click)="scrollToSectionFive()">Өтінім беру</button>
@@ -52,41 +69,61 @@
 
   <div class="overlay" *ngIf="isMenuOpen" (click)="closeMenu()"></div>
 
-  <div class="sidebar" *ngIf="isMenuOpen">
-    <mat-form-field appearance="fill" class="select-project">
-      <mat-label *ngIf="!selectedProject">Жобалар</mat-label>
-      <mat-select [(value)]="selectedProject" (selectionChange)="onProjectChange($event)">
-        <mat-select-trigger>Жобалар</mat-select-trigger>
-        <mat-option [value]="'Тестант'">
-          <div class="project-item">
-            <img src="assets/img/testant-nav-icon.svg" alt="TestAnt Icon" class="item-icon">
-            <span class="project-title">Пәндік және толық ҰБТ бойынша онлайн тестілеу жүйесі.</span>
-          </div>
-        </mat-option>
-        <mat-option [value]="'Курсант'">
-          <div class="option">
-            <div class="project-item">
-              <img src="assets/img/kursant-nav-icon.svg" alt="KursAnt Icon" class="item-icon">
-              <span class="project-title">Пәндік және толық ҰБТ бойынша онлайн тестілеу жүйесі.</span>
-            </div>
-            <div class="option-info">
-              <img src="assets/img/navbar-info-icon.svg" alt="info">
-              <p>КурсАнт IT экожүйесінің құрамы</p>
-            </div>
-          </div>
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+  <div class="sidebar" [class.sidebar-active]="isMenuOpen">
+    <div class="sidebar-dropdowns">
+      <div class="sidebar-dropdown" [class.sidebar-dropdown-open]="isSidebarDropdownOpen" (click)="toggleSidebarDropdown()">
+        <div class="sidebar-dropdown-header">
+          <span>Жобалар</span>
+          <span class="sidebar-dropdown-icon"><i class="bi bi-chevron-down"></i></span>
+        </div>
 
-    <mat-form-field appearance="fill" class="select-school">
-      <mat-label *ngIf="!selectedSchool">Мектептер</mat-label>
-      <mat-select [(value)]="selectedSchool" (selectionChange)="onSchoolChange($event)">
-        <mat-select-trigger>Мектептер</mat-select-trigger>
-        <mat-option *ngFor="let school of schools" [value]="school">
-          {{ school }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+        <div class="sidebar-dropdown-menu" *ngIf="isSidebarDropdownOpen">
+          <div class="sidebar-dropdown-item" (click)="onProjectChange('testant')">
+            <img src="assets/img/testant-nav-icon.svg" alt="TestAnt Icon" class="sidebar-item-icon" />
+            <div class="sidebar-item-content">
+              <p>Пәндік және толық ҰБТ бойынша онлайн тестілеу жүйесі.</p>
+            </div>
+          </div>
+          <div class="sidebar-dropdown-item" (click)="onProjectChange('kursant')">
+            <img src="assets/img/kursant-nav-icon.svg" alt="KursAnt Icon" class="sidebar-item-icon" />
+            <div class="sidebar-item-content">
+              <p>Пәндік және толық ҰБТ бойынша онлайн тестілеу жүйесі.</p>
+            </div>
+          </div>
+          <div class="sidebar-dropdown-footer">
+            <div class="sidebar-footer-icon"><img src="assets/img/navbar-info-icon.svg"></div>
+            <span>КурсАнт IT экожүйесінің құрамы</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-dropdown" [class.sidebar-dropdown-open]="isSidebarSchoolDropdownOpen" (click)="toggleSidebarSchoolDropdown()">
+        <div class="sidebar-dropdown-header">
+          <span>Мектептер</span>
+          <span class="sidebar-dropdown-icon"><i class="bi bi-chevron-down"></i></span>
+        </div>
+
+        <div class="sidebar-dropdown-school-menu" [class.shifted]="isSidebarDropdownOpen" *ngIf="isSidebarSchoolDropdownOpen">
+          <div class="sidebar-dropdown-school-item" (click)="onSchoolChange('Алмалыбақ')">
+            <div class="sidebar-item-content">
+              <p>Алмалыбақ</p>
+            </div>
+          </div>
+          <div class="sidebar-dropdown-school-item" (click)="onSchoolChange('Қаскелең')">
+            <div class="sidebar-item-content">
+              <p>Қаскелең</p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+
   </div>
+
+
 </section>
 

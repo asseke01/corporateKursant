@@ -23,8 +23,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 })
 export class SchoolPageComponent implements OnInit {
 
-  @ViewChild('sectionFive') sectionFive!: ElementRef;
-
   public schoolName: string | null = null;
 
   constructor(private route: ActivatedRoute) {
