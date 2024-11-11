@@ -74,24 +74,11 @@ export class AdminApplicationsComponent implements OnInit{
   public applicantForm = this.form.group({
     id: [null as number | null],
     fullname: ['', Validators.required],
-    phone_number: ['', [Validators.required, Validators.pattern(/^\+7 \(\d{3}\) \d{3} \d{2} \d{2}$/)]],
 
   })
 
 
   onSave(){
-    let phone = this.applicantForm.get('phone_number')?.value;
-
-    if (phone) {
-      phone = phone.replace(/\D/g, '');
-
-      if (phone.length === 10) {
-        phone = `+7 (${phone.slice(0, 3)}) ${phone.slice(3, 6)} ${phone.slice(6, 8)} ${phone.slice(8, 10)}`;
-        this.applicantForm.get('phone_number')?.setValue(phone);
-      } else {
-        this.alert.warn('Некорректный формат телефона')
-      }
-    }
 
     if (this.applicantForm.invalid) {
       this.alert.warn('Форма содержит ошибки');

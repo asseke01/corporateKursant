@@ -28,7 +28,7 @@
           <td>{{item.text}}</td>
           <td>
             <ng-container *ngIf="item.status == 'worked_out'">
-              <span>Қабылданды</span>
+              <span>{{item.report_text}}</span>
             </ng-container >
 
             <ng-container *ngIf="item.status == 'new'">
@@ -60,8 +60,8 @@
       <div class="content">
 
         <div class="form-group">
-          <label for="fio">ФИО</label>
-          <input type="text" id="fio" name="fio" formControlName = 'report_text'>
+          <label for="fio">Отчет</label>
+          <textarea type="text" id="fio" name="fio" formControlName = 'report_text'></textarea>
         </div>
 
       </div>

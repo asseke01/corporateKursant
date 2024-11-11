@@ -40,11 +40,9 @@ export class UserNavbarComponent {
     this.isMenuOpen = !this.isMenuOpen;
 
     if (this.isMenuOpen) {
-      document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
     } else {
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
+      document.body.style.overflow = 'auto';
     }
   }
 
@@ -82,7 +80,9 @@ export class UserNavbarComponent {
   }
 
   public onSchoolChange(name:string): void {
-    this.router.navigate(['/school', name]);
+    this.router.navigate(['/school', name]).then(() => {
+      window.scrollTo(0, 0);
+    });
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
     this.closeMenu();
@@ -91,6 +91,7 @@ export class UserNavbarComponent {
 
   public backToMain() {
     if (this.router.url === '/') {
+      window.scrollTo(0, 0);
       window.location.reload();
     } else {
       this.router.navigate(['']);
@@ -101,7 +102,8 @@ export class UserNavbarComponent {
   public closeMenu() {
     console.log('Closing menu');
     this.isMenuOpen = false;
-
+    this.isSidebarSchoolDropdownOpen = false
+    this.isSidebarDropdownOpen = false;
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
   }

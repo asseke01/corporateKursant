@@ -1,9 +1,8 @@
 <app-user-navbar (scrollToSection)="scrollToSectionFive()"></app-user-navbar>
 <div class="main-page__container ">
-  <div class="section_one container">
+  <div class="section_one container section">
     <div class="section1_left ">
       <div class="section_one__header">
-        <img src="assets/img/left-bar.svg" alt="left-bar">
         <h1><span>КурсАнт</span> {{ schoolName }} мектебі</h1>
       </div>
       <div class="adress">
@@ -11,10 +10,12 @@
         <p>Қаскелең, Қонаев к., №123</p>
       </div>
       <p>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</p>
+      <form [formGroup]="otinimForm">
       <div class="left-input-btn">
-        <input type="text" placeholder="Номер +7" [mask]="'(000) 000 00 00'" prefix="+7 ">
-        <button>Өтінім беру</button>
+        <input type="text" placeholder="+7 (___) __ __" [mask]="'(000) 000 00 00'" prefix="+7 " formControlName='phone_number'>
+        <button (click)="makeOrder()">Өтінім беру</button>
       </div>
+      </form>
       <div class="star-arrow-container">
         <img src="assets/img/star-arrow.svg" alt="arrow" class="star-arrow">
       </div>
@@ -23,7 +24,7 @@
       <img src="assets/img/school-page-iocn.svg" alt="1">
     </div>
   </div>
-  <div class="section_two container">
+  <div class="section_two container section">
     <div class="scrolling-text">
       <div class="scrolling-text-content">
         <span><img src="assets/img/image%20(1).svg" alt="1"></span>
@@ -39,9 +40,11 @@
     </div>
   </div>
 
-  <div class="section_three ">
+
+
+  <div class="section_three container section">
     <div class="card" *ngFor="let new of (showAllNews ? news : news.slice(0, 3))">
-      <img [src]="new.poster" [alt]="new.index">
+      <img [src]="new.poster" [alt]="new.index" class="card-img">
       <div class="news-bottom">
         <h3>{{ new.name }}</h3>
         <p>{{ new.description }}</p>
@@ -57,50 +60,55 @@
     </div>
   </div>
 
-  <section class="four">
-    <div class="section_four container">
-      <h3>Әкімшілік пен ұстаздар</h3>
-      <div class="cards">
-        <div class="teachers_card" *ngFor="let teacher of teacherCards">
-          <div class="card_header">
-            <img [src]="teacher.image" alt="teacher">
-            <div class="header-text">
-              <h4>{{ teacher.name }}</h4>
-              <p>{{ teacher.title }}</p>
-            </div>
+  <div class="section_four section" >
+    <h3>Әкімшілік пен ұстаздар</h3>
+    <div class="cards">
+      <div class="teachers_card" *ngFor="let teacher of teacherCards">
+        <div class="card_header">
+          <img [src]="teacher.image" alt="teacher">
+          <div class="header-text">
+            <h4>{{ teacher.name }}</h4>
+            <p>{{ teacher.title }}</p>
           </div>
-          <p class="card-text">{{ teacher.text }}</p>
         </div>
+        <p class="card-text" >{{ teacher.text }}</p>
       </div>
-    </div>
-  </section>
+    </div >
+  </div>
 
-
-  <section>
-    <div class="section_five container" id="section_five">
-      <img src="assets/img/otinim-image.svg" alt="otinim">
+  <form [formGroup]="otinimForm" >
+    <div  id="section_five"   class="section_five container section">
+      <img src="assets/img/otinim-image.svg" alt="otinim" >
       <div class="otinim">
         <h3>Өтінім беру</h3>
         <p>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</p>
         <div class="left-input-btn">
-          <input type="text" placeholder="Номер +7" [mask]="'(000) 000 00 00'" prefix="+7 ">
-          <button>Өтінім беру</button>
+          <input type="text" formControlName='phone_number' placeholder="+7 (___) __ __" [mask]="'(000) 000 00 00'"
+                 prefix="+7 ">
+          <button (click)="makeOrder()">Өтінім беру</button>
         </div>
       </div>
     </div>
-  </section>
+  </form>
 
 
-  <section class="six">
-    <div class="section_six container">
-      <h3>Сенім жәшігі</h3>
-      <p>Мектепте қандай да бір қысым болып, көмек керек болса, төмендегі жолға сипаттаңыз. <br> Хат анонимді түрде
-        жіберіледі.</p>
-      <textarea></textarea>
-      <button>Жіберу</button>
-    </div>
-  </section>
+  <form [formGroup]="trustBoxForm">
+    <section class="section-box ">
+      <div class="section_six">
+        <div class="six-info">
+          <h3>Сенім жәшігі</h3>
+          <p>Мектепте қандай да бір қысым болып, көмек керек болса, төмендегі жолға сипаттаңыз. <br> Хат анонимді түрде
+            жіберіледі.</p>
+          <textarea formControlName="text"></textarea>
+          <button (click)="makeMessage()">Жіберу</button>
+        </div>
+
+      </div>
+    </section>
+  </form>
+
 
 </div>
+
 
 <app-footer></app-footer>

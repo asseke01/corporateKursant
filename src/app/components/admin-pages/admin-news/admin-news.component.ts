@@ -47,6 +47,7 @@ export class AdminNewsComponent implements OnInit{
   selectedFileName: string | null = null;
   selectedSchoolId: number | null = null;
   selectedNewsId: number | undefined = undefined;
+  selectedSchoolName: string | null = null;
   status:string='';
   box:any[]=[];
   schools:any[]=[];
@@ -63,6 +64,10 @@ export class AdminNewsComponent implements OnInit{
   onSchoolChange(event: Event): void {
     const schoolId = (event.target as HTMLSelectElement).value;
     this.selectedSchoolId = +schoolId;
+
+    const selectedSchool = this.schools.find(school => school.id === this.selectedSchoolId);
+    this.selectedSchoolName = selectedSchool ? selectedSchool.name : null;
+
     this.loadBox();
   }
 
@@ -81,7 +86,7 @@ export class AdminNewsComponent implements OnInit{
     if(this.modalType == 'create'){
       this.dialog.open(this.dialogTemplate, {
         width: '800px',
-        maxWidth: '30vw',
+        maxWidth: '70vw',
         height: '50vw',
         maxHeight: '50vw',
         enterAnimationDuration,
@@ -130,12 +135,11 @@ export class AdminNewsComponent implements OnInit{
     if (tag.trim()) {
       (this.newsForm.get('tags') as FormArray).push(this.form.control(tag.trim()));
     } else {
-      this.alert.warn('Тег не может быть пустым'); // Сообщение, если тег пустой
+      this.alert.warn('Тег не может быть пустым');
     }
   }
 
 
-  // Метод для удаления тега
   removeTag(index: number): void {
     (this.newsForm.get('tags') as FormArray).removeAt(index);
   }

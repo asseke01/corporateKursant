@@ -228,7 +228,9 @@ mat-option {
   cursor: pointer;
 }
 
-
+.burger-menu{
+  display: none;
+}
 
 
 @media (max-width: 1024px) {

@@ -14,7 +14,10 @@ export const routes: Routes = [
     path: '', component: MainPageComponent
   },
   {
-    path: 'school/:schoolName', component: SchoolPageComponent
+    path: 'school/alma', component: SchoolPageComponent
+  },
+  {
+    path: 'school/kask', component: SchoolPageComponent
   },
   {
     path:'admin-login', component:AdminLoginComponent

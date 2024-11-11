@@ -6,7 +6,10 @@ import {NgForOf} from '@angular/common';
 import {NewsService} from '../../../services/news-service/news.service';
 import {News} from '../../../../assets/news.interface';
 import {NgxMaskDirective} from 'ngx-mask';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
+import {OrderService} from '../../../services/order-service/order.service';
+import {AlertService} from '../../../services/alert-service/alert.service';
+import {TrustBoxService} from '../../../services/trust-box/trust-box.service';
 
 @Component({
   selector: 'app-school-page',
@@ -24,17 +27,36 @@ import {ReactiveFormsModule} from '@angular/forms';
 export class SchoolPageComponent implements OnInit {
 
   public schoolName: string | null = null;
+  public schoolId: number | null = null;
+  private orderService = inject(OrderService);
+  private alertService = inject(AlertService);
+  private trustBoxService = inject(TrustBoxService);
+  private form = inject(FormBuilder);
 
+
+  public otinimForm = this.form.group({
+    phone_number: ['', [Validators.required, Validators.pattern(/^7\d{9}$/)]],
+  })
+
+  public trustBoxForm = this.form.group({
+    text: ['', Validators.required],
+  });
   constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.schoolName = params.get('schoolName');
-    });
+    const path = this.route.snapshot.routeConfig?.path;
+    if (path === 'school/alma') {
+      this.schoolName = 'Алмалы';
+      this.schoolId = 1
+      this.getNews(this.schoolId);
+    } else if (path === 'school/kask') {
+      this.schoolName = 'Қаскелең';
+      this.schoolId = 2
+      this.getNews(this.schoolId);
+    }
     console.log(this.schoolName);
 
-    this.getNews();
   }
 
   public teacherCards: any = [
@@ -68,7 +90,7 @@ export class SchoolPageComponent implements OnInit {
   public news: News[] = []
   public showAllNews: boolean = false;
 
-  public getNews(id: number = 3) {
+  public getNews(id: number) {
     this.newsService.getNews(id).subscribe(data => {
       this.news = data.map((news: News) => ({
         ...news,
@@ -84,7 +106,53 @@ export class SchoolPageComponent implements OnInit {
   public scrollToSectionFive(): void {
     const sectionFiveElement = document.getElementById('section_five');
     if (sectionFiveElement) {
-      sectionFiveElement.scrollIntoView({behavior: 'smooth'});
+      const yOffset = -180;
+      const y = sectionFiveElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  }
+
+  public makeOrder(): void {
+    if (this.otinimForm.valid) {
+      let phone = this.otinimForm.get('phone_number')?.value;
+
+      if (phone) {
+        phone = phone.replace(/\D/g, '');
+        phone = `+7 (${phone.slice(0, 3)}) ${phone.slice(3, 6)} ${phone.slice(6, 8)} ${phone.slice(8, 10)}`;
+      }
+
+      const formData = {phone_number: phone};
+
+      this.orderService.makeOrder(formData).subscribe({
+        next: () => {
+          this.alertService.success('Өтінім сәтті жіберілді!');
+          this.otinimForm.reset();
+        },
+        error: () => {
+          this.alertService.error('Өтінімді жіберу кезінде қате орын алды. Қайталап көріңіз.');
+        }
+      });
+    } else {
+      this.alertService.warn('Телефон нөмірін енгізіңіз.');
+    }
+  }
+
+  public makeMessage(): void {
+    if (this.trustBoxForm.valid) {
+      const message = this.trustBoxForm.get('text')?.value;
+
+      this.trustBoxService.makeMessage({text: message}).subscribe({
+        next: () => {
+          this.alertService.success('Хабарлама сәтті жіберілді!');
+          this.trustBoxForm.reset();
+        },
+        error: () => {
+          this.alertService.error('Хабарламаны жіберу кезінде қате орын алды. Қайталап көріңіз.');
+        }
+      });
+    } else {
+      this.alertService.warn('Хабарламаны жазыңыз.');
     }
   }
 }

@@ -26,14 +26,14 @@
     <div class="news-grid" *ngIf="box.length > 0">
       <div class="news-card" *ngFor="let item of box">
         <div class="news-content">
-          <span class="news-category">{{ item.name }}</span>
+          <span class="news-category">{{ selectedSchoolName }}</span>
           <h2 class="news-title">{{ item.name }}</h2>
           <div class="news-tags">
             <span class="tag" *ngFor="let tag of item.tags">{{ tag }}</span>
           </div>
           <a class="news-link" (click)="openDialog('250ms', '250ms','update', item.id)">Изменить</a>
         </div>
-        <div class="news-thumbnail" [style.backgroundImage]="'url(http://127.0.0.1:8000' + item.poster">
+        <div class="news-thumbnail" [style.backgroundImage]="'url(http://109.248.231.214' + item.poster">
         </div>
       </div>
     </div>
@@ -85,7 +85,7 @@
               <quill-editor
                 formControlName="description"
                 placeholder="Введите описание"
-                style="height: 200px; margin-bottom: 30px"
+                style="height: 300px; margin-bottom: 40px"
                 [modules]="quillModules">
               </quill-editor>
             </div>

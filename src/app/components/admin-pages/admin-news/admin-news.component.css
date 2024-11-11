@@ -315,7 +315,7 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 20px;
-  width: 100%; /* Добавляем ширину */
+  width: 100%;
 }
 
 .chip {
@@ -359,6 +359,11 @@ input[type="text"],input[type="number"],textarea {
   padding: 7px 9px;
   font-size: 15px;
   outline: none;
+}
+
+.ql-editor img {
+  width: 100%;
+  height: auto;
 }
 
 .add-tag-button {

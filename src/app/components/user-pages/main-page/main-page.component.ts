@@ -25,7 +25,6 @@ import {TrustBoxService} from '../../../services/trust-box/trust-box.service';
   styleUrl: './main-page.component.css'
 })
 export class MainPageComponent implements OnInit {
-  @ViewChild('sectionFive') sectionFive!: ElementRef;
 
   public teacherCards: any = [
     {

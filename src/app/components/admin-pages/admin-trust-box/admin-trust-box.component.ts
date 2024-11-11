@@ -64,6 +64,7 @@ private alert = inject(AlertService)
 
   closeDialog(): void {
     this.dialog.closeAll();
+    this.boxForm.reset();
   }
 
 

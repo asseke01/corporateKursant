@@ -11,7 +11,7 @@
           </div>
           <p>Үздік мектепте оқу мүмкіндігін жіберіп <br> алмаңыз. Оқуға өтінім қалдырыңыз, <br> менеджерлер хабарласады:</p>
           <div class="left-input-btn">
-            <input type="text" formControlName='phone_number' placeholder="Номер +7" [mask]="'(000) 000 00 00'"
+            <input type="text" formControlName='phone_number' placeholder="+7 (___) __ __" [mask]="'(000) 000 00 00'"
                    prefix="+7 ">
             <button (click)="makeOrder()">Өтінім беру</button>
           </div>
@@ -75,7 +75,7 @@
 
   <div class="section_three container section">
     <div class="card" *ngFor="let new of (showAllNews ? news : news.slice(0, 3))">
-      <img [src]="new.poster" [alt]="new.index">
+      <img [src]="new.poster" [alt]="new.index" class="card-img">
       <div class="news-bottom">
         <h3>{{ new.name }}</h3>
         <p>{{ new.description }}</p>
@@ -114,9 +114,9 @@
         <h3>Өтінім беру</h3>
         <p>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</p>
         <div class="left-input-btn">
-          <input type="text" formControlName='phone_number' placeholder="Номер +7" [mask]="'(000) 000 00 00'"
+          <input type="text" formControlName='phone_number' placeholder="+7 (___) __ __" [mask]="'(000) 000 00 00'"
                  prefix="+7 ">
-          <button>Өтінім беру</button>
+          <button (click)="makeOrder()">Өтінім беру</button>
         </div>
       </div>
     </div>
