@@ -1,4 +1,4 @@
-<app-user-navbar></app-user-navbar>
+<app-user-navbar (scrollToSection)="scrollToSectionFive()"></app-user-navbar>
 <div class="main-page__container ">
 
   <form [formGroup]="otinimForm">
@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="section1_right">
-          <img src="assets/img/main-page-icon%201%201.svg" alt="1">
+          <img src="assets/img/girl_ico.svg" alt="1">
         </div>
       </div>
     </div>
@@ -91,7 +91,7 @@
     </div>
   </div>
 
-  <div class="section_four section">
+  <div class="section_four section" >
     <h3>Әкімшілік пен ұстаздар</h3>
     <div class="cards">
       <div class="teachers_card" *ngFor="let teacher of teacherCards">
@@ -102,14 +102,14 @@
             <p>{{ teacher.title }}</p>
           </div>
         </div>
-        <p class="card-text">{{ teacher.text }}</p>
+        <p class="card-text" >{{ teacher.text }}</p>
       </div>
-    </div>
+    </div >
   </div>
 
-  <form [formGroup]="otinimForm">
-    <div class="section_five container section">
-      <img src="assets/img/otinim-image.svg" alt="otinim">
+  <form [formGroup]="otinimForm" >
+    <div  id="section_five"   class="section_five container section">
+      <img src="assets/img/otinim-image.svg" alt="otinim" >
       <div class="otinim">
         <h3>Өтінім беру</h3>
         <p>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</p>

@@ -6,9 +6,16 @@
 
 
 
-.navbar{
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   border-bottom: 2px solid #EDEDED;
+  background-color: white;
 }
+
 
 .navbar-container {
   max-width:1200px;
@@ -261,20 +268,14 @@ mat-option {
   .burger-menu .bar {
     width: 24px;
     height: 3px;
-    background-color: #333;
+    background-color: black;
     transition: 0.3s;
   }
 
-  .burger-active .bar:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-  }
-
-  .burger-active .bar:nth-child(2) {
-    opacity: 0;
-  }
-
-  .burger-active .bar:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+  .close-icon {
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
   }
 
   .overlay {
@@ -291,7 +292,7 @@ mat-option {
     position: fixed;
     top: 0;
     left: 0;
-    width: 170px;
+    width: 200px;
     height: 100vh;
     background-color: #fff;
     z-index: 6;
@@ -358,8 +359,11 @@ mat-option {
   }
 
   .sidebar-item-icon {
-    width: 80px;
+    width: 80px; /* Set the desired display width */
+    height: auto; /* Ensure the aspect ratio is maintained */
     margin-right: 10px;
+    object-fit: contain; /* Ensures the image scales nicely within its bounds */
+    image-rendering: auto; /* Improves rendering quality */
   }
 
   .sidebar-item-content p {

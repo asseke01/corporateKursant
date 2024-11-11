@@ -4,32 +4,140 @@
   box-sizing: border-box;
 }
 
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  height: 384px;
-  display: flex;
-  align-items: center;
+.footer {
   background-color: #212121;
 }
 
-.full-width-wrapper {
-  width: 99.2vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+.footer-details {
+  height: 384px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 90px;
+  color: white;
+  padding: 70px 0 40px 0;
 }
 
-.footer-content {
-  color: white;
+.projects-contacts {
   display: flex;
-  gap: 90px;
+  flex-direction: column;
+  gap: 40px;
 }
-h2 {
+
+.footer-details h2 {
   font-size: 34px;
   font-weight: bold;
 }
-p {
+
+.footer-details p {
   font-size: 24px;
   font-family: Gilroy-Regular, sans-serif;
+}
+
+@media only screen and (max-width: 1270px) {
+  .footer-container {
+    flex-direction: row;
+    text-align: left;
+  }
+
+
+  .footer-details{
+    padding: 40px 20px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .footer-container {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 999px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-details{
+    display: flex;
+    text-align: center;
+    height: 300px;
+  }
+
+  .footer-details img{
+    width: 250px;
+  }
+
+  .footer-details h2 {
+    font-size:22px;
+  }
+  .footer-details p{
+    font-size: 17px;
+  }
+}
+
+@media  (max-width: 745px) {
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer img {
+    width: 230px;
+    margin-bottom: 20px;
+  }
+  .footer-details{
+    margin:20px;
+  }
+
+  .footer-details h2 {
+    font-size:20px;
+  }
+  .footer-details p{
+    font-size: 16px;
+  }
+}
+
+@media  (max-width: 692px) {
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 678px) {
+  .footer-details {
+    display: flex;
+    flex-direction: column;
+    gap:10px
+  }
+
+
+  .footer img {
+    width: 180px;
+    margin-bottom: 20px;
+  }
+
+  .projects-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer{
+    height: 400px;
+  }
+  .footer-details{
+    padding: 25px 10px;
+    margin: 0;
+  }
+
+  .footer-details h2 {
+    padding: 5px 0;
+    font-size:16px;
+  }
+  .footer-details p{
+    font-size: 16px;
+  }
 }

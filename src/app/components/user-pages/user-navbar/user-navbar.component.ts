@@ -68,32 +68,51 @@ export class UserNavbarComponent {
     this.isSidebarDropdownOpen = false;
   }
 
-  public onProjectChange(school:string): void {
+  public onProjectChange(school: string): void {
     const project = school;
-    if (project === 'testant') {
-      window.open('https://testant.kz/', '_blank');
-    } else if (project === 'kursant') {
-      window.open('https://www.kursant.kz/', '_blank');
-    }
+    this.closeMenu();
+
+    setTimeout(() => {
+      if (project === 'testant') {
+        window.open('https://testant.kz/', '_blank');
+      } else if (project === 'kursant') {
+        window.open('https://www.kursant.kz/', '_blank');
+      }
+    }, 100);
   }
 
   public onSchoolChange(name:string): void {
     this.router.navigate(['/school', name]);
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
+    this.closeMenu();
+
   }
 
   public backToMain() {
-    this.router.navigate(['']);
+    if (this.router.url === '/') {
+      window.location.reload();
+    } else {
+      this.router.navigate(['']);
+    }
   }
 
 
   public closeMenu() {
+    console.log('Closing menu');
     this.isMenuOpen = false;
-    this.isSidebarDropdownOpen=false;
-    this.isSidebarSchoolDropdownOpen=false;
+
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
   }
 
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event) {
+    const target = event.target as HTMLElement;
+
+    if (!target.closest('.dropdown')) {
+      this.isDropdownOpen = false;
+      this.isSchoolDropdownOpen = false;
+    }
+  }
 }

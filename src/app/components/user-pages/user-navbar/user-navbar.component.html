@@ -3,13 +3,15 @@
     <div class="navbar-left">
 
 
-      <div class="burger-menu" [class.burger-active]="isMenuOpen" (click)="toggleMenu()">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
+      <div class="burger-menu" (click)="isMenuOpen ? closeMenu() : toggleMenu()">
+        <div *ngIf="!isMenuOpen" class="bar"></div>
+        <div *ngIf="!isMenuOpen" class="bar"></div>
+        <div *ngIf="!isMenuOpen" class="bar"></div>
+        <span *ngIf="isMenuOpen" class="close-icon">✕</span>
       </div>
 
-      <img src="assets/img/kursant-bilim-icon.svg" alt="nav-icon" class="nav-icon" (click)="backToMain()">
+
+      <img src="assets/img/kursant-bilim-icon.svg" alt="nav-icon" class="nav-icon" (click)="backToMain()" style="cursor: pointer">
 
 
       <div class="dropdown" [class.active]="isDropdownOpen" (click)="toggleDropdown()">

@@ -2,7 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  letter-spacing:0.5px;
 }
+
+button {
+  color: black !important;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -10,13 +16,13 @@
 }
 
 .main-page__container {
-  padding-top:40px;
+  margin-top:130px;
   box-sizing: content-box;
 }
 
 
 .section{
-  margin-bottom: 90px;
+  margin-bottom: 30px;
 }
 
 
@@ -210,8 +216,8 @@
   padding: 4px 6px;
   border-radius: 5px;
   background-color: #6BDBFF;
-  min-width: 60px; /* Set a minimum width for tags */
-  max-width: 100px; /* Optional: limits tag expansion */
+  min-width: 60px;
+  max-width: 100px;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -417,7 +423,7 @@
 @media (max-width: 1750px) {
   .star-arrow-container {
     position: absolute;
-    top: 550px;
+    top: 600px;
     left: 50px;
   }
 }
@@ -463,7 +469,7 @@
 
   .star-arrow-container {
     position: absolute;
-    top: 550px;
+    top: 600px;
     left: -50px;
   }
   .star-arrow {
@@ -498,8 +504,12 @@
 
   .star-arrow-container {
     position: absolute;
-    top: 550px;
+    top: 600px;
     left: -60px;
+  }
+
+  .section1_right img {
+    width: 600px;
   }
   .star-arrow {
     width: 193px;
@@ -529,7 +539,6 @@
 
 }
 
-/* Tablet (smaller tablets) */
 @media only screen and (min-width: 600px) and (max-width: 999px) {
   .main-page__container{
     padding-top:20px;
@@ -556,7 +565,7 @@
   .star-arrow-mob{
     display: block;
     position: absolute;
-    top: 420px;
+    top: 460px;
     left: 480px;
     transform: rotate(40deg);
   }
@@ -661,8 +670,8 @@
   .star-arrow-mob{
     display: block;
     position: absolute;
-    top: 420px;
-    left: 480px;
+    top: 450px;
+    left: 440px;
     transform: rotate(40deg);
   }
 }
@@ -671,7 +680,7 @@
   .star-arrow-mob{
     display: block;
     position: absolute;
-    top: 420px;
+    top: 460px;
     left: 420px;
     transform: rotate(42deg);
   }
@@ -681,8 +690,8 @@
   .star-arrow-mob{
     display: block;
     position: absolute;
-    top: 340px;
-    left: 480px;
+    top: 380px;
+    left: 460px;
     transform: rotate(13deg);
   }
 
@@ -694,7 +703,7 @@
   .star-arrow-mob{
     display: block;
     position: absolute;
-    top: 340px;
+    top: 380px;
     left: 410px;
     transform: rotate(13deg);
   }
@@ -705,11 +714,13 @@
   .star-arrow-mob{
     display: block;
     position: absolute;
-    top: 325px;
-    left: 430px;
+    top: 385px;
+    left: 410px;
     transform: rotate(13deg);
   }
 }
+
+
 
 @media  (max-width: 745px) {
   .container {
@@ -727,7 +738,7 @@
   .star-arrow-mob{
     display: block;
     position: absolute;
-    top: 300px;
+    top: 370px;
     left: 390px;
     transform: rotate(25deg);
   }
@@ -753,7 +764,6 @@
 
   .section1_left {
     max-width: 350px;
-    padding-top: 30px;
   }
 
   .section1_right{
@@ -928,13 +938,6 @@
     display: none;
   }
 
-  .star-arrow-mob{
-    display: block;
-    position: absolute;
-    top: 300px;
-    left: 380px;
-    transform: rotate(25deg);
-  }
 
 
   .left-input-btn{
@@ -952,7 +955,6 @@
 
   .section1_left {
     max-width: 350px;
-    padding-top: 30px;
   }
 
   .section1_right{
@@ -964,6 +966,7 @@
   }
 
   .section1_right img {
+
   }
 
   .star-arrow-container {
@@ -977,13 +980,13 @@
 
   .left-input-btn {
     flex-direction: column;
+    width: 100%;
+  }
+  .left-input-btn input{
+    width: 100%;
+    max-width: 600px;
   }
 
-  .left-input-btn input,
-  .left-input-btn button {
-    width: 100%;
-    max-width: 400px;
-  }
 
   .section_two {
     display: flex;
@@ -1064,15 +1067,20 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 0;
+  }
+
+  .otinim{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .section_five img {
     max-width: 100%;
   }
 
-  .otinim {
-    max-width: 100%;
-  }
+
 
   .section_six {
     padding: 10px;
@@ -1104,11 +1112,21 @@
 
 
 @media (max-width: 678px) {
+  .main-page__container{
+    margin-top: 40px;
+  }
+
   .star-arrow-mob{
     display: none;
   }
-  .section1_right{
-    display: none;
+
+  .section_one{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .section1_right img {
+    width: 400px;
   }
 
   .footer-details {
@@ -1131,6 +1149,10 @@
     flex-direction: column;
     gap: 30px;
   }
+
+  .footer{
+    height: 400px;
+  }
   .footer-details{
     padding: 25px 10px;
     margin: 0;
@@ -1145,5 +1167,13 @@
   }
 }
 
+@media (max-width: 400px) {
+  .main-page__container{
+    margin-top: 50px;
+  }
+  .section1_right img {
+    width: 350px;
+  }
+}
 
 

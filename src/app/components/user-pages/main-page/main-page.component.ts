@@ -25,7 +25,7 @@ import {TrustBoxService} from '../../../services/trust-box/trust-box.service';
   styleUrl: './main-page.component.css'
 })
 export class MainPageComponent implements OnInit {
-
+  @ViewChild('sectionFive') sectionFive!: ElementRef;
 
   public teacherCards: any = [
     {
@@ -115,9 +115,13 @@ export class MainPageComponent implements OnInit {
   public scrollToSectionFive(): void {
     const sectionFiveElement = document.getElementById('section_five');
     if (sectionFiveElement) {
-      sectionFiveElement.scrollIntoView({behavior: 'smooth'});
+      const yOffset = -180;
+      const y = sectionFiveElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   }
+
 
   public makeOrder(): void {
     if (this.otinimForm.valid) {
