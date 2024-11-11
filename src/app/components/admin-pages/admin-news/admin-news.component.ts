@@ -7,6 +7,7 @@ import {MatIconButton} from '@angular/material/button';
 import {NgForOf, NgIf} from '@angular/common';
 import {NewsService} from '../../../services/news-service/news.service';
 import {QuillEditorComponent} from 'ngx-quill';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-admin-news',
@@ -31,7 +32,7 @@ export class AdminNewsComponent implements OnInit{
   private newsService = inject(NewsService);
   private form = inject(FormBuilder);
   private alert = inject(AlertService)
-
+  public userUrl = environment.apiUrl
   quillModules: any = {
     toolbar: [
       [{ header: [1, 2, false] }],

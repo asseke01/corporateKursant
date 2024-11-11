@@ -33,7 +33,7 @@
           </div>
           <a class="news-link" (click)="openDialog('250ms', '250ms','update', item.id)">Изменить</a>
         </div>
-        <div class="news-thumbnail" [style.backgroundImage]="'url(http://109.248.231.214' + item.poster">
+        <div class="news-thumbnail" [style.backgroundImage]="'url(' + userUrl + item.poster + ')'">
         </div>
       </div>
     </div>
