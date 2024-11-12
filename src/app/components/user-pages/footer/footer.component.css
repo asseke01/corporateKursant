@@ -32,6 +32,7 @@
 
 .footer-details p {
   font-size: 24px;
+  cursor: pointer;
   font-family: Gilroy-Regular, sans-serif;
 }
 
