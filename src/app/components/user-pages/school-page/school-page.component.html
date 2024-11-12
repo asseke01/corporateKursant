@@ -1,113 +1,152 @@
-<app-user-navbar (scrollToSection)="scrollToSectionFive()"></app-user-navbar>
-<div class="main-page__container ">
-  <div class="section_one container section">
-    <div class="section1_left ">
-      <div class="section_one__header">
-        <h1><span>КурсАнт</span> {{ schoolName }} мектебі</h1>
+<app-user-navbar></app-user-navbar>
+
+<div class="block main_page_block">
+  <div class="container header_container">
+    <div class="text">
+      <div class="header" >
+        <h1 style="margin-left: 0">КурсАнт Алмалыбақ мектебі</h1>
       </div>
-      <div class="adress">
-        <img src="assets/img/location.svg" alt="location">
+
+      <div class="address">
+        <img src="assets/img/location.svg" alt="location" width="22" height="22">
         <p>Қаскелең, Қонаев к., №123</p>
       </div>
+
       <p>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</p>
-      <form [formGroup]="otinimForm">
-      <div class="left-input-btn">
-        <input type="text" placeholder="+7 (___) __ __" [mask]="'(000) 000 00 00'" prefix="+7 " formControlName='phone_number'>
-        <button (click)="makeOrder()">Өтінім беру</button>
-      </div>
-      </form>
-      <div class="star-arrow-container">
-        <img src="assets/img/star-arrow.svg" alt="arrow" class="star-arrow">
+
+      <div class="form">
+        <input type="text" placeholder="Номер телефона">
+        <button>Өтінім беру</button>
+        <img src="assets/img/star.png" class="star">
+        <img src="assets/img/form_arrow.png" class="arrow">
       </div>
     </div>
-    <div class="section1_right">
-      <img src="assets/img/school-page-iocn.svg" alt="1">
-    </div>
+
+    <img src="assets/img/school-page-iocn.svg"  class="main_poster">
   </div>
-  <div class="section_two container section">
-    <div class="scrolling-text">
-      <div class="scrolling-text-content">
-        <span><img src="assets/img/image%20(1).svg" alt="1"></span>
-        <span><img src="assets/img/image%20(2).svg" alt="1"></span>
-        <span><img src="assets/img/image%20(3).svg" alt="1"></span>
-        <span><img src="assets/img/image%20(1).svg" alt="1"></span>
-        <span><img src="assets/img/image%20(2).svg" alt="1"></span>
-        <span><img src="assets/img/image%20(3).svg" alt="1"></span>
-        <span><img src="assets/img/image%20(1).svg" alt="1"></span>
-        <span><img src="assets/img/image%20(2).svg" alt="1"></span>
-        <span><img src="assets/img/image%20(3).svg" alt="1"></span>
-      </div>
+
+  <div class="container images">
+    <div
+      class="image"
+      *ngFor="let school_image of school_images, let i = index"
+      [ngStyle]="{'background-image': 'url(' + '\'' + encodeURI(school_image) + '\'' + ')'}"
+      (click)="open_image(i)">
     </div>
   </div>
 
 
 
-  <div class="section_three container section">
-    <div class="card" *ngFor="let new of (showAllNews ? news : news.slice(0, 3))">
-      <img [src]="new.poster" [alt]="new.index" class="card-img">
-      <div class="news-bottom">
-        <h3>{{ new.name }}</h3>
-        <p>{{ new.description }}</p>
-        <div class="bottom-spans">
-          <span *ngFor="let tag of new.tags">{{ tag }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="more-news">
-      <button (click)="toggleShowAllNews()">
-        {{ showAllNews ? 'Жасыру' : 'Толық көру' }}
-      </button>
-    </div>
+
+
+
+
+  <div class="modal" *ngIf="selectedImageUrl != null">
+    <span class="close" (click)="closePreview()">&times;</span>
+    <img class="modal-content" [src]="school_images[selectedImageUrl]" alt="Preview">
+
+    <img src="assets/img/right.png" alt="" class="left_model" (click)="go_left()">
+    <img src="assets/img/right.png" alt="" class="right_model" (click)="go_right()">
   </div>
 
-  <div class="section_four section" >
-    <h3>Әкімшілік пен ұстаздар</h3>
-    <div class="cards">
-      <div class="teachers_card" *ngFor="let teacher of teacherCards">
-        <div class="card_header">
-          <img [src]="teacher.image" alt="teacher">
-          <div class="header-text">
-            <h4>{{ teacher.name }}</h4>
-            <p>{{ teacher.title }}</p>
+  <div class="container news_container">
+    <div class="news_list">
+      <a href="/news/1/" class="news_card">
+        <div  class="poster"></div>
+        <div class="text">
+          <b>Соңғы қоңырау</b>
+          <p>Соңғы қоңырау іс-шарасы орталық акт заллда, сағат 9:00де басталады.</p>
+          <div class="types">
+            <span class="type">Курсант Қаскелең</span>
+            <span class="type" style="background-color: #FFB37E;">Оқушыларға</span>
           </div>
         </div>
-        <p class="card-text" >{{ teacher.text }}</p>
-      </div>
-    </div >
-  </div>
-
-  <form [formGroup]="otinimForm" >
-    <div  id="section_five"   class="section_five container section">
-      <img src="assets/img/otinim-image.svg" alt="otinim" >
-      <div class="otinim">
-        <h3>Өтінім беру</h3>
-        <p>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</p>
-        <div class="left-input-btn">
-          <input type="text" formControlName='phone_number' placeholder="+7 (___) __ __" [mask]="'(000) 000 00 00'"
-                 prefix="+7 ">
-          <button (click)="makeOrder()">Өтінім беру</button>
+      </a>
+      <a href="/news/2/" class="news_card">
+        <div  class="poster"></div>
+        <div class="text">
+          <b>Географиядан жарыс</b>
+          <p>Таңдау пәні география сыныптары арасында «География» пәнінен 7 кезеңнен тұратын жарыс өтті.,</p>
+          <div class="types">
+            <span class="type">Курсант Қаскелең</span>
+            <span class="type" style="background-color: #FFB37E;">Оқушыларға</span>
+          </div>
         </div>
+      </a>
+      <a href="/news/3/" class="news_card">
+        <div  class="poster"></div>
+        <div class="text">
+          <b>Ер мен жердің жеңісі</b>
+          <p>Оқушылардың Отан тарихына деген сүйіспеншіліктерін арттыру, жеңіс салтанатын көре алмай </p>
+          <div class="types">
+            <span class="type">Курсант Қаскелең</span>
+            <span class="type" style="background-color: #FFB37E;">Оқушыларға</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    <a href="/news/" class="see_more_news">Толық көру</a>
+  </div>
+</div>
+
+<div class="block main_page_block admins_block">
+  <div class="container admins_container">
+    <p class="p_header">Әкімшілік пен ұстаздар</p>
+
+    <div class="admins">
+      <div class="admin">
+        <div class="title">
+          <div class="photo" ></div>
+
+          <div class="text">
+            <b>Оралбек Тоқтарбек</b>
+            <span>“Kursant Kaskelen” Мектеп директоры</span>
+          </div>
+        </div>
+
+        <i>“Оқушылар тұлға болып қалыптасудың соңғы қадамында жүргендіктен оларға тек білім беріп қоймай, сол түйгенін дұрыс пайдалануға, жақсы университетке түсуге, дұрыс мамандық таңдауға, өмірінде дұрыс шешім шығаруға үйрету — мақсатымыз.”</i>
+      </div>
+      <div class="admin">
+        <div class="title">
+          <div class="photo" ></div>
+
+          <div class="text">
+            <b>Оралбек Тоқтарбек</b>
+            <span>“Kursant Kaskelen” Мектеп директоры</span>
+          </div>
+        </div>
+
+        <i>“Бәріміз бірге еліміздің дамуы мен халқымыздың өркендеуіне елеулі үлес қосатынымызға сеніміміз мол:”</i>
+      </div>
+      <div class="admin">
+        <div class="title">
+          <div class="photo" ></div>
+
+          <div class="text">
+            <b>Оралбек Тоқтарбек</b>
+            <span>“Kursant Kaskelen” Мектеп директоры</span>
+          </div>
+        </div>
+
+        <i>“Оқушылар тұлға болып қалыптасудың соңғы қадамында жүргендіктен оларға тек білім беріп қоймай, сол түйгенін дұрыс пайдалануға, жақсы университетке түсуге, дұрыс мамандық таңдауға, өмірінде дұрыс шешім шығаруға үйрету — мақсатымыз.”</i>
       </div>
     </div>
-  </form>
+  </div>
+</div>
 
+<div class="block main_page_block">
+  <div class="container form_container">
+    <img >
 
-  <form [formGroup]="trustBoxForm">
-    <section class="section-box ">
-      <div class="section_six">
-        <div class="six-info">
-          <h3>Сенім жәшігі</h3>
-          <p>Мектепте қандай да бір қысым болып, көмек керек болса, төмендегі жолға сипаттаңыз. <br> Хат анонимді түрде
-            жіберіледі.</p>
-          <textarea formControlName="text"></textarea>
-          <button (click)="makeMessage()">Жіберу</button>
-        </div>
+    <div class="text">
+      <p class="p_header">Өтінім беру</p>
+      <span>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</span>
 
+      <div class="form">
+        <input type="text" placeholder="Номер">
+        <button>Өтінім беру</button>
       </div>
-    </section>
-  </form>
-
-
+    </div>
+  </div>
 </div>
 
 

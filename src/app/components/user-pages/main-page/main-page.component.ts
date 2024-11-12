@@ -1,4 +1,4 @@
-import {Component, ElementRef, inject, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, inject, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {UserNavbarComponent} from '../user-navbar/user-navbar.component';
 import {NewsService} from '../../../services/news-service/news.service';
 import {News} from '../../../../assets/news.interface';
@@ -24,7 +24,8 @@ import {TrustBoxService} from '../../../services/trust-box/trust-box.service';
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.css'
 })
-export class MainPageComponent implements OnInit {
+export class MainPageComponent implements OnInit,AfterViewInit {
+  @ViewChild('carouselContainer', { static: false }) carouselContainer!: ElementRef;
 
   public teacherCards: any = [
     {
@@ -84,6 +85,8 @@ export class MainPageComponent implements OnInit {
   public phoneNumber: string = '';
   private form = inject(FormBuilder);
 
+  constructor(private renderer: Renderer2) {
+  }
 
   public otinimForm = this.form.group({
     phone_number: ['', [Validators.required, Validators.pattern(/^7\d{9}$/)]],
@@ -97,6 +100,8 @@ export class MainPageComponent implements OnInit {
   ngOnInit() {
     this.getNews();
   }
+
+
 
   public getNews(id: number = 3) {
     this.newsService.getNews(id).subscribe(data => {
@@ -163,6 +168,29 @@ export class MainPageComponent implements OnInit {
     } else {
       this.alertService.warn('Хабарламаны жазыңыз.');
     }
+  }
+
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      setInterval(() => this.partnersInfiniteScroll(), 10);
+    }, 700);
+  }
+
+  private partnersInfiniteScroll(): void {
+    const partnersRows = this.carouselContainer.nativeElement.querySelectorAll('.partners');
+    const firstPartnersRow = this.carouselContainer.nativeElement.querySelector('.partners_row') as HTMLElement;
+
+    partnersRows.forEach((row: HTMLElement) => {
+      const firstWidth = row.scrollLeft;
+      row.scrollLeft += 1;
+      const lastWidth = row.scrollLeft;
+
+      if (firstWidth === lastWidth) {
+        const gap = parseFloat(window.getComputedStyle(row).getPropertyValue('gap'));
+        row.scrollLeft -= (firstPartnersRow.clientWidth + gap);
+      }
+    });
   }
 
 }

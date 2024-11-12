@@ -2,7 +2,7 @@ import {Component, ElementRef, inject, OnInit, ViewChild} from '@angular/core';
 import {UserNavbarComponent} from '../user-navbar/user-navbar.component';
 import {ActivatedRoute} from '@angular/router';
 import {FooterComponent} from '../footer/footer.component';
-import {NgForOf} from '@angular/common';
+import {NgForOf, NgIf, NgStyle} from '@angular/common';
 import {NewsService} from '../../../services/news-service/news.service';
 import {News} from '../../../../assets/news.interface';
 import {NgxMaskDirective} from 'ngx-mask';
@@ -19,10 +19,12 @@ import {TrustBoxService} from '../../../services/trust-box/trust-box.service';
     FooterComponent,
     NgForOf,
     NgxMaskDirective,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgIf,
+    NgStyle
   ],
   templateUrl: './school-page.component.html',
-  styleUrl: './school-page.component.css'
+  styleUrl: '../main-page/main-page.component.css'
 })
 export class SchoolPageComponent implements OnInit {
 
@@ -41,6 +43,9 @@ export class SchoolPageComponent implements OnInit {
   public trustBoxForm = this.form.group({
     text: ['', Validators.required],
   });
+  public selectedImageUrl!: any;
+  public school_images = ['assets/img/image (1).svg', 'assets/img/image (2).svg', 'assets/img/image (3).svg', "assets/img/girl_icon.svg"];
+
   constructor(private route: ActivatedRoute) {
   }
 
@@ -66,7 +71,7 @@ export class SchoolPageComponent implements OnInit {
       text: '“Оқушылар тұлға болып қалыптасудың соңғы қадамында жүргендіктен оларға тек білім беріп қоймай, сол түйгенін\n' +
         '        дұрыс пайдалануға, жақсы университетке түсуге, дұрыс мамандық таңдауға, өмірінде дұрыс шешім шығаруға үйрету —\n' +
         '        мақсатымыз.”',
-      image: 'assets/img/teacher.svg',
+      image: 'assets/img/.svg',
     },
     {
       name: 'Қадырбай Бексеит',
@@ -80,7 +85,7 @@ export class SchoolPageComponent implements OnInit {
       text: '“Оқушылар тұлға болып қалыптасудың соңғы қадамында жүргендіктен оларға тек білім беріп қоймай, сол түйгенін\n' +
         '        дұрыс пайдалануға, жақсы университетке түсуге, дұрыс мамандық таңдауға, өмірінде дұрыс шешім шығаруға үйрету —\n' +
         '        мақсатымыз.”',
-      image: 'assets/img/teacher.svg',
+      image: 'assets/img/.svg',
     },
   ]
 
@@ -155,4 +160,33 @@ export class SchoolPageComponent implements OnInit {
       this.alertService.warn('Хабарламаны жазыңыз.');
     }
   }
+
+  public open_image(i:number) {
+    this.selectedImageUrl = i;
+    document.body.style.overflow = 'hidden';
+  }
+
+  public closePreview() {
+    this.selectedImageUrl = null;
+    document.body.style.overflow = 'auto';
+  }
+
+  public go_left() {
+    this.selectedImageUrl -= 1
+
+    if (this.selectedImageUrl < 0) {
+      this.selectedImageUrl = this.school_images.length - 1
+    }
+  }
+
+  public go_right() {
+    this.selectedImageUrl += 1
+
+    if (this.selectedImageUrl == this.school_images.length) {
+      this.selectedImageUrl = 0
+    }
+  }
+
+
+  protected readonly encodeURI = encodeURI;
 }
