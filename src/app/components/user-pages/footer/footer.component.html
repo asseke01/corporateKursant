@@ -7,8 +7,8 @@
       <div class="projects-contacts">
         <div class="projects">
           <h2>Жобалар</h2>
-          <p>TestAnt</p>
-          <p>KursAnt Online</p>
+          <p (click)="onProjectChange('testant')">TestAnt</p>
+          <p (click)="onProjectChange('kursant')">KursAnt Online</p>
         </div>
         <div class="contacts">
           <h2>Контактілер</h2>
@@ -18,8 +18,8 @@
       </div>
       <div class="schools">
         <h2>Мектептер</h2>
-        <p>Алмалыбақ</p>
-        <p>Қаскелең</p>
+        <p (click)="onSchoolChange('alma')">Алмалыбақ</p>
+        <p (click)="onSchoolChange('kask')">Қаскелең</p>
       </div>
     </div>
   </div>

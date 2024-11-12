@@ -33,6 +33,9 @@ export class AdminNewsComponent implements OnInit{
   private form = inject(FormBuilder);
   private alert = inject(AlertService)
   public userUrl = environment.apiUrl
+  showConfirmDialog = false;
+
+
   quillModules: any = {
     toolbar: [
       [{ header: [1, 2, false] }],
@@ -92,6 +95,7 @@ export class AdminNewsComponent implements OnInit{
         maxHeight: '50vw',
         enterAnimationDuration,
         exitAnimationDuration,
+        disableClose: true,
       });
     }else {
       this.newsService.getNewsById(this.selectedNewsId).subscribe((data) => {
@@ -99,11 +103,12 @@ export class AdminNewsComponent implements OnInit{
 
         this.dialog.open(this.dialogTemplate, {
           width: '800px',
-          maxWidth: '30vw',
+          maxWidth: '70vw',
           height: '50vw',
           maxHeight: '50vw',
           enterAnimationDuration,
           exitAnimationDuration,
+          disableClose: true,
         });
       });
     }
@@ -188,6 +193,9 @@ export class AdminNewsComponent implements OnInit{
 
 
 
+
+
+
   onSubmit(): void {
     if (this.newsForm.valid) {
       const formData = new FormData();
@@ -238,5 +246,26 @@ export class AdminNewsComponent implements OnInit{
     }
   }
 
+
+
+  onConfirm(): void {
+    this.showConfirmDialog = false;
+    console.log('Элемент удален');
+    this.newsService.deleteNews(this.selectedNewsId).subscribe(
+      response => {
+        this.alert.success('Новость удалена');
+        this.closeDialog();
+        this.loadBox()
+      },
+      error => {
+        this.alert.error('Произошла ошибка при удалении новости');
+      }
+    );
+  }
+
+
+  onCancel(): void {
+    this.showConfirmDialog = false;
+  }
 
 }

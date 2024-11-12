@@ -129,20 +129,20 @@
         <div class="content">
           <div class="form-row">
             <div class="form-group">
-              <label for="name" class="form-label">Название поста</label>
-              <input type="text" id="name" formControlName="name" placeholder="Введите название поста" />
+              <label for="name" class="form-label">Посттың атауы</label>
+              <input type="text" id="name" formControlName="name" placeholder="Посттың атын енгізіңіз" />
             </div>
 
             <div class="form-group">
               <label for="index" class="form-label">Индекс</label>
-              <input type="number" id="index" formControlName="index" placeholder="Введите индекс" />
+              <input type="number" id="index" formControlName="index" placeholder="Индексті енгізіңіз" />
             </div>
           </div>
 
-          <div class="section-divider">Выбор школы</div>
+          <div class="section-divider">Мектеп таңдау</div>
           <div class="form-row">
             <div class="form-group">
-              <label for="schoolSelectId" class="form-label">Школа</label>
+              <label for="schoolSelectId" class="form-label">Мектеп</label>
               <select id="schoolSelectId" formControlName="schools" class="custom-select">
                 <option [value]="null" disabled selected>Выберите школу</option>
                 <option *ngFor="let school of schools" [value]="school.id">{{ school.name }}</option>
@@ -150,24 +150,24 @@
             </div>
           </div>
 
-          <div class="section-divider">Описание</div>
+          <div class="section-divider">Сипаттама</div>
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">Описание поста</label>
+              <label class="form-label">Посттың сипаттамасы</label>
               <quill-editor
                 formControlName="description"
-                placeholder="Введите описание"
+                placeholder="Сипаттаманы енгізіңіз"
                 style="height: 200px; margin-bottom: 30px"
                 [modules]="quillModules">
               </quill-editor>
             </div>
           </div>
 
-          <div class="section-divider">Тэги</div>
+          <div class="section-divider">Тегтер</div>
           <div class="add-tag-container">
-            <input type="text" #tagInput placeholder="Введите тег" (keydown.enter)="addTag(tagInput.value); tagInput.value=''" />
+            <input type="text" #tagInput placeholder="Тегті енгізіңіз" (keydown.enter)="addTag(tagInput.value); tagInput.value=''" />
             <button type="button" class="add-tag-button" (click)="addTag(tagInput.value); tagInput.value=''">
-              <i class="bi bi-plus-circle"></i> Добавить
+              <i class="bi bi-plus-circle"></i> Қосу
             </button>
           </div>
 
@@ -178,14 +178,14 @@
             </div>
           </div>
 
-          <div class="section-divider">Файлы</div>
+          <div class="section-divider">Файлдар</div>
           <div class="form-row">
             <div class="form-group">
-              <label for="poster">Загрузить постер</label>
+              <label for="poster">Постерді жүктеу</label>
               <div class="file-upload-wrapper">
                 <input type="file" id="poster" (change)="onFileSelect($event)" class="file-input" />
                 <label for="poster" class="file-label">
-                  <i class="bi bi-upload"></i> Выберите файл
+                  <i class="bi bi-upload"></i>Файл таңдау
                 </label>
                 <span class="file-name">{{ selectedFileName || "Файл не выбран" }}</span>
               </div>
@@ -201,5 +201,18 @@
   </mat-dialog-content>
   <mat-dialog-actions>
     <button class="save-subject" (click)="onSubmit()">Сақтау</button>
+    <button class="delete-subject" *ngIf="modalType == 'update'" (click)="showConfirmDialog = true">Жою</button>
   </mat-dialog-actions>
 </ng-template>
+
+
+<div class="confirm-dialog-overlay" *ngIf="showConfirmDialog">
+  <div class="confirm-dialog">
+    <h2>Растау</h2>
+    <p>Сіз бұл жаңалықты жойғыңыз келетініне сенімдісіз бе?</p>
+    <div class="dialog-actions">
+      <button (click)="onCancel()">Бас тарту</button>
+      <button class="confirm-button" (click)="onConfirm()">Жою</button>
+    </div>
+  </div>
+</div>

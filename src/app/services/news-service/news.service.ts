@@ -35,4 +35,15 @@ export class NewsService {
     return this.http.post(`${this.userUrl}save_post/`, data);
   }
 
+
+  deleteNews(id: number | undefined) {
+    if (id === undefined) {
+      throw new Error("Invalid id: 'undefined' is not allowed.");
+    }
+    const body = { id: id };
+
+    return this.http.post<{ success: boolean }>(`${this.userUrl}delete_post/`, body, {
+    });
+  }
+
 }

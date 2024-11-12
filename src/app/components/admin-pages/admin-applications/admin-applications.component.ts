@@ -56,6 +56,7 @@ export class AdminApplicationsComponent implements OnInit{
       width: '800px',
       enterAnimationDuration,
       exitAnimationDuration,
+      disableClose: true,
     });
 
     console.log(id);

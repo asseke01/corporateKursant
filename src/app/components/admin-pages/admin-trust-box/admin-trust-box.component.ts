@@ -56,6 +56,7 @@ private alert = inject(AlertService)
       width: '800px',
       enterAnimationDuration,
       exitAnimationDuration,
+      disableClose: true,
     });
     this.boxForm.patchValue({
       message_id:id
