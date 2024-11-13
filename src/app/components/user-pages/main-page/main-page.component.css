@@ -1539,3 +1539,58 @@ body {
     font-size: 25px;
   }
 }
+
+
+.news-container {
+  display: grid;
+  gap: 16px;
+  border-radius: 8px;
+  grid-template-areas:
+    "title"
+    "tags"
+    "description";
+}
+
+.news-container h2 {
+  grid-area: title;
+  font-size: 38px;
+  color: #333;
+}
+
+.tags-container {
+  grid-area: tags;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  padding: 6px 12px;
+  font-size: 0.9em;
+  color: black;
+  border-radius: 4px;
+}
+
+.description {
+  grid-area: description;
+  color: #555;
+  line-height: 1.6;
+}
+
+
+::ng-deep .description img {
+  width: 100% !important;
+  height: auto !important;
+}
+
+
+.news_page_block{
+  margin-top: 60px;
+  min-height: 100vh;
+}
+
+@media (max-width: 550px) {
+  .news_page_block{
+    margin-top: 30px;
+  }
+}

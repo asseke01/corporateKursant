@@ -9,6 +9,7 @@ import {AccessDeniedComponent} from './components/helpers/access-denied/access-d
 import {MainPageComponent} from './components/user-pages/main-page/main-page.component';
 import {SchoolPageComponent} from './components/user-pages/school-page/school-page.component';
 import {NotFoundComponent} from './components/user-pages/not-found/not-found.component';
+import {NewsPageComponent} from './components/user-pages/news-page/news-page.component';
 
 export const routes: Routes = [
   {
@@ -26,7 +27,9 @@ export const routes: Routes = [
   {
     path:'access-denied', component:AccessDeniedComponent
   },
-  { path: '**', component: NotFoundComponent },
+  {
+    path:'news/:id', component:NewsPageComponent
+  },
   {
     path:'admin', component:AdminPagesComponent, canActivate: [AuthGuard],
     children:[
@@ -40,5 +43,8 @@ export const routes: Routes = [
         path:'news', component:AdminNewsComponent
       }
     ]
-  }
+  },
+
+  { path: '**', component: NotFoundComponent },
+
 ];

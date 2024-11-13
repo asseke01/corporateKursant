@@ -95,7 +95,7 @@
 
     <div class="container news_container">
       <div class="news_list">
-        <div *ngFor="let new of (showAllNews ? news : news.slice(0, 3))" class="news_card">
+        <div *ngFor="let new of (showAllNews ? news : news.slice(0, 3))" class="news_card" (click)="goToNewsDetail(new.id)">
           <div class="poster" [ngStyle]="{'background-image': 'url(' + new.poster + ')'}"></div>
           <div class="text">
             <b>{{ new.name  }}</b>

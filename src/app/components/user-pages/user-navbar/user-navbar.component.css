@@ -32,7 +32,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 60px;
 }
 
 .sidebar {
@@ -114,7 +113,6 @@
   flex-direction: column;
   gap:14px;
   padding: 10px;
-  border-bottom: 1px solid #f0f0f0;
 }
 
 .dropdown-school-item {
@@ -143,16 +141,24 @@
 .dropdown-footer {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 15px;
+  padding: 15px 15px 15px 10px;
   font-size: 14px;
   background-color: #F0F4FF;
   border-radius: 8px;
   color: black;
 }
 
-.footer-icon {
-  margin-right: 5px;
+.dropdown-footer span{
+  margin-left: 11px;
+  font-size: 12px;
+}
+
+.footer-icon img{
+  width: 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -360,12 +366,13 @@ mat-option {
     border-bottom: 1px solid #f0f0f0;
   }
 
+
   .sidebar-item-icon {
-    width: 80px; /* Set the desired display width */
-    height: auto; /* Ensure the aspect ratio is maintained */
+    width: 80px;
+    height: auto;
     margin-right: 10px;
-    object-fit: contain; /* Ensures the image scales nicely within its bounds */
-    image-rendering: auto; /* Improves rendering quality */
+    object-fit: contain;
+    image-rendering: auto;
   }
 
   .sidebar-item-content p {

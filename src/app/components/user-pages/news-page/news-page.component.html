@@ -1,0 +1,20 @@
+<app-user-navbar></app-user-navbar>
+<div class="block news_page_block " *ngIf="news">
+  <div class="container header_container">
+    <div class="news-container">
+      <h2>{{ news.post.name }}</h2>
+      <div class="tags-container">
+    <span
+      *ngFor="let tag of news.post.tags; index as i"
+      class="tag"
+      [ngStyle]="{'background-color': getTagColorByIndex(i)}"
+    >
+      {{ tag }}
+    </span>
+      </div>
+      <div class="description" [innerHTML]="news.post.description"></div>
+    </div>
+
+  </div>
+</div>
+<app-footer></app-footer>

@@ -9,6 +9,8 @@ import {OrderService} from '../../../services/order-service/order.service';
 import {AlertService} from '../../../services/alert-service/alert.service';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TrustBoxService} from '../../../services/trust-box/trust-box.service';
+import {Router} from '@angular/router';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-main-page',
@@ -80,6 +82,8 @@ export class MainPageComponent implements OnInit,AfterViewInit {
   private orderService = inject(OrderService);
   private alertService = inject(AlertService);
   private trustBoxService = inject(TrustBoxService);
+  private router = inject(Router);
+  public userUrl = environment.apiUrl
 
   public news: News[] = []
   public showAllNews: boolean = false;
@@ -108,7 +112,7 @@ export class MainPageComponent implements OnInit,AfterViewInit {
     this.newsService.getNews(id).subscribe(data => {
       this.news = data.map((news: News) => ({
         ...news,
-        poster: `http://127.0.0.1:8000${news.poster}`
+        poster:  `${this.userUrl}${news.poster}`
       }));
     })
   }
@@ -196,6 +200,12 @@ export class MainPageComponent implements OnInit,AfterViewInit {
 
   getTagColorByIndex(index: number): string {
     return this.tagColors[index % this.tagColors.length];
+  }
+
+  goToNewsDetail(id: number) {
+    this.router.navigate(['/news', id]);
+    window.scrollTo(0, 0);
+
   }
 
 }

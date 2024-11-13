@@ -14,7 +14,7 @@
       <img src="assets/img/kursant-bilim-icon.svg" alt="nav-icon" class="nav-icon" (click)="backToMain()" style="cursor: pointer">
 
 
-      <div class="dropdown" [class.active]="isDropdownOpen" (click)="toggleDropdown()">
+      <div class="dropdown" [class.active]="isDropdownOpen" (click)="toggleDropdown()" style="margin-left: 65px; margin-right: 45px">
         <div class="dropdown-header">
           <span>Жобалар</span>
           <span class="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
@@ -22,7 +22,7 @@
 
 
         <div class="dropdown-menu" *ngIf="isDropdownOpen">
-          <div class="dropdown-item" (click)="onProjectChange('testant')">
+          <div class="dropdown-item" (click)="onProjectChange('testant')" style="  border-bottom: 1px solid #f0f0f0;">
             <img src="assets/img/testant-nav-icon.svg" alt="TestAnt Icon" class="item-icon" />
             <div class="item-content" style="margin-bottom: 10px">
               <p>Пәндік және толық ҰБТ бойынша онлайн тестілеу жүйесі.</p>
@@ -34,7 +34,7 @@
               <p>Пәндік және толық ҰБТ бойынша онлайн тестілеу жүйесі.</p>
             </div>
           </div>
-          <div class="dropdown-footer">
+          <div class="dropdown-footer" (click)="$event.stopPropagation()">
             <div class="footer-icon"><img src="assets/img/navbar-info-icon.svg"></div>
             <span>КурсАнт IT экожүйесінің құрамы</span>
           </div>
@@ -75,7 +75,7 @@
 
 
     <div class="sidebar-dropdowns">
-      <span (click)="backToMain()" class=" sidebar-dropdown-header" style="margin-bottom: 10px; margin-left: 10px; margin-top: 10px; cursor: pointer">Басты бет</span>
+      <span (click)="backToMain()" class=" sidebar-dropdown-header" style="margin-bottom: 5px; margin-left: 10px; margin-top: 10px; cursor: pointer">Басты бет</span>
       <div class="sidebar-dropdown" [class.sidebar-dropdown-open]="isSidebarDropdownOpen" (click)="toggleSidebarDropdown()">
 
         <div class="sidebar-dropdown-header">
@@ -96,7 +96,7 @@
               <p>Пәндік және толық ҰБТ бойынша онлайн тестілеу жүйесі.</p>
             </div>
           </div>
-          <div class="sidebar-dropdown-footer">
+          <div class="sidebar-dropdown-footer" (click)="$event.stopPropagation()">
             <div class="sidebar-footer-icon"><img src="assets/img/navbar-info-icon.svg"></div>
             <span>КурсАнт IT экожүйесінің құрамы</span>
           </div>
