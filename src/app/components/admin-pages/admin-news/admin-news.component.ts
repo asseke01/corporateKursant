@@ -233,6 +233,7 @@ export class AdminNewsComponent implements OnInit{
         next: (response) => {
           if (response.success) {
             this.closeDialog();
+            this.loadBox();
             this.alert.success('Успешно сохранена');
           }
         },

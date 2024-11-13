@@ -1220,3 +1220,117 @@ button {
 }
 
 
+.main_page_block.six_block {
+  background: linear-gradient(266.6deg, #6ADAFF 27.59%, #00B0EA 69.26%);
+  margin-top: 105px;
+  padding-top: 42px;
+  padding-bottom: 42px;
+}
+
+.section_six {
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
+
+.block.main_page_block.six_block .section_six .six-info h3 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.block.main_page_block.six_block .section_six .six-info p {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+
+.block.main_page_block.six_block .section_six .six-info textarea {
+  width: 100%;
+  min-height: 150px;
+  background-color: #b1e1f8;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 16px;
+  resize: none;
+  outline: none;
+  margin-bottom: 30px;
+}
+
+.six-info button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #4db6e4;
+  background-color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.six-info button:hover {
+  background-color: #e0f4fc;
+}
+
+@media (max-width: 768px) {
+  .main_page_block.six_block {
+    margin-top: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .block.main_page_block.six_block .section_six .six-info h3 {
+    font-size: 20px;
+  }
+
+  .block.main_page_block.six_block .section_six .six-info p {
+    font-size: 14px;
+  }
+
+  .block.main_page_block.six_block .section_six .six-info textarea {
+    width: 90%;
+    min-height: 120px;
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .six-info button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main_page_block.six_block {
+    margin-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .block.main_page_block.six_block .section_six .six-info h3 {
+    font-size: 18px;
+  }
+
+  .block.main_page_block.six_block .section_six .six-info p {
+    font-size: 12px;
+  }
+
+  .block.main_page_block.six_block .section_six .six-info textarea {
+    width: 80%;
+    min-height: 100px;
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .six-info button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}

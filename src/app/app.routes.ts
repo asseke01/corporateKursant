@@ -8,6 +8,7 @@ import {AuthGuard} from './services/auth-service/auth.guard';
 import {AccessDeniedComponent} from './components/helpers/access-denied/access-denied.component';
 import {MainPageComponent} from './components/user-pages/main-page/main-page.component';
 import {SchoolPageComponent} from './components/user-pages/school-page/school-page.component';
+import {NotFoundComponent} from './components/user-pages/not-found/not-found.component';
 
 export const routes: Routes = [
   {
@@ -25,6 +26,7 @@ export const routes: Routes = [
   {
     path:'access-denied', component:AccessDeniedComponent
   },
+  { path: '**', component: NotFoundComponent },
   {
     path:'admin', component:AdminPagesComponent, canActivate: [AuthGuard],
     children:[

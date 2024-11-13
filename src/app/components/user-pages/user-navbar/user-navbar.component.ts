@@ -68,11 +68,11 @@ export class UserNavbarComponent {
 
   public onProjectChange(school: string): void {
     const project = school;
-    this.closeMenu();
-
     setTimeout(() => {
       if (project === 'testant') {
         window.open('https://testant.kz/', '_blank');
+        this.closeMenu();
+
       } else if (project === 'kursant') {
         window.open('https://www.kursant.kz/', '_blank');
       }
@@ -95,6 +95,7 @@ export class UserNavbarComponent {
       window.location.reload();
     } else {
       this.router.navigate(['']);
+      window.scrollTo(0, 0);
     }
   }
 

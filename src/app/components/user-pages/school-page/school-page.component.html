@@ -1,4 +1,4 @@
-<app-user-navbar></app-user-navbar>
+<app-user-navbar (scrollToSection)="scrollToSectionFive()"></app-user-navbar>
 
 <div class="block main_page_block">
   <div class="container header_container">
@@ -14,12 +14,16 @@
 
       <p>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</p>
 
-      <div class="form">
-        <input type="text" placeholder="Номер телефона">
-        <button>Өтінім беру</button>
-        <img src="assets/img/star.png" class="star">
-        <img src="assets/img/form_arrow.png" class="arrow">
-      </div>
+      <form [formGroup]="otinimForm">
+
+        <div class="form">
+          <input type="text"  formControlName='phone_number' placeholder="+7 (___) __ __" [mask]="'(000) 000 00 00'"
+                 prefix="+7 ">
+          <button (click)="makeOrder()">Өтінім беру</button>
+          <img src="assets/img/star.png" class="star">
+          <img src="assets/img/form_arrow.png" class="arrow">
+        </div>
+      </form>
     </div>
 
     <img src="assets/img/school-page-iocn.svg"  class="main_poster">
@@ -50,41 +54,20 @@
 
   <div class="container news_container">
     <div class="news_list">
-      <a href="/news/1/" class="news_card">
-        <div  class="poster"></div>
+      <div *ngFor="let new of (showAllNews ? news : news.slice(0, 3))" class="news_card">
+        <div class="poster" [ngStyle]="{'background-image': 'url(' + new.poster + ')'}"></div>
         <div class="text">
-          <b>Соңғы қоңырау</b>
-          <p>Соңғы қоңырау іс-шарасы орталық акт заллда, сағат 9:00де басталады.</p>
+          <b>{{ new.name  }}</b>
+          <p>{{ new.description }}</p>
           <div class="types">
-            <span class="type">Курсант Қаскелең</span>
-            <span class="type" style="background-color: #FFB37E;">Оқушыларға</span>
+          <span *ngFor="let tag of new.tags; index as i" class="type" [ngStyle]="{'background-color': getTagColorByIndex(i)}">
+            {{ tag }}
+          </span>
           </div>
         </div>
-      </a>
-      <a href="/news/2/" class="news_card">
-        <div  class="poster"></div>
-        <div class="text">
-          <b>Географиядан жарыс</b>
-          <p>Таңдау пәні география сыныптары арасында «География» пәнінен 7 кезеңнен тұратын жарыс өтті.,</p>
-          <div class="types">
-            <span class="type">Курсант Қаскелең</span>
-            <span class="type" style="background-color: #FFB37E;">Оқушыларға</span>
-          </div>
-        </div>
-      </a>
-      <a href="/news/3/" class="news_card">
-        <div  class="poster"></div>
-        <div class="text">
-          <b>Ер мен жердің жеңісі</b>
-          <p>Оқушылардың Отан тарихына деген сүйіспеншіліктерін арттыру, жеңіс салтанатын көре алмай </p>
-          <div class="types">
-            <span class="type">Курсант Қаскелең</span>
-            <span class="type" style="background-color: #FFB37E;">Оқушыларға</span>
-          </div>
-        </div>
-      </a>
+      </div>
     </div>
-    <a href="/news/" class="see_more_news">Толық көру</a>
+    <a (click)="toggleShowAllNews()" class="see_more_news">{{ showAllNews ? 'Жасыру' : 'Толық көру' }}</a>
   </div>
 </div>
 
@@ -95,7 +78,7 @@
     <div class="admins">
       <div class="admin">
         <div class="title">
-          <div class="photo" ></div>
+          <div class="photo" style="background-image: url('assets/img/teacher1.svg')"></div>
 
           <div class="text">
             <b>Оралбек Тоқтарбек</b>
@@ -107,11 +90,11 @@
       </div>
       <div class="admin">
         <div class="title">
-          <div class="photo" ></div>
+          <div class="photo" style="background-image: url('assets/img/teacher2.svg')"></div>
 
           <div class="text">
-            <b>Оралбек Тоқтарбек</b>
-            <span>“Kursant Kaskelen” Мектеп директоры</span>
+            <b>Қадырбай Бексеит</b>
+            <span>“Kursant Kaskelen” Директор орынбасары</span>
           </div>
         </div>
 
@@ -119,7 +102,7 @@
       </div>
       <div class="admin">
         <div class="title">
-          <div class="photo" ></div>
+          <div class="photo" style="background-image: url('assets/img/teacher1.svg')"></div>
 
           <div class="text">
             <b>Оралбек Тоқтарбек</b>
@@ -133,21 +116,41 @@
   </div>
 </div>
 
-<div class="block main_page_block">
+<div class="block main_page_block" id="section_five">
   <div class="container form_container">
-    <img >
+    <img src="assets/img/otinim-image.svg" alt="otinim">
+    <form [formGroup]="otinimForm" >
 
-    <div class="text">
-      <p class="p_header">Өтінім беру</p>
-      <span>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</span>
+      <div class="text">
+        <p class="p_header">Өтінім беру</p>
+        <span>Үздік мектепте оқу мүмкіндігін жіберіп алмаңыз. Оқуға өтінім қалдырыңыз, менеджерлер хабарласады:</span>
 
-      <div class="form">
-        <input type="text" placeholder="Номер">
-        <button>Өтінім беру</button>
+        <div class="form">
+          <input type="text" formControlName='phone_number' placeholder="+7 (___) __ __" [mask]="'(000) 000 00 00'"
+                 prefix="+7 ">
+          <button (click)="makeOrder()">Өтінім беру</button>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>
 
+<div class="block main_page_block six_block">
+  <div class="container admins_container">
+    <form [formGroup]="trustBoxForm">
+
+      <div class="section_six">
+        <div class="six-info">
+          <h3>Сенім жәшігі</h3>
+          <p>Мектепте қандай да бір қысым болып, көмек керек болса, төмендегі жолға сипаттаңыз. <br> Хат анонимді түрде
+            жіберіледі.</p>
+          <textarea formControlName="text"></textarea>
+          <button (click)="makeMessage()">Жіберу</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
 
 <app-footer></app-footer>

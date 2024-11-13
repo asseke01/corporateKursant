@@ -34,6 +34,7 @@ export class SchoolPageComponent implements OnInit {
   private alertService = inject(AlertService);
   private trustBoxService = inject(TrustBoxService);
   private form = inject(FormBuilder);
+  tagColors: string[] = ['#FFB37E', '#A4D3EE', '#98FB98'];
 
 
   public otinimForm = this.form.group({
@@ -186,7 +187,9 @@ export class SchoolPageComponent implements OnInit {
       this.selectedImageUrl = 0
     }
   }
-
+  getTagColorByIndex(index: number): string {
+    return this.tagColors[index % this.tagColors.length];
+  }
 
   protected readonly encodeURI = encodeURI;
 }

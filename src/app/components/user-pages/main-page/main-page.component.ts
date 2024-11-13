@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, inject, OnInit, Renderer2, ViewChi
 import {UserNavbarComponent} from '../user-navbar/user-navbar.component';
 import {NewsService} from '../../../services/news-service/news.service';
 import {News} from '../../../../assets/news.interface';
-import {NgForOf} from '@angular/common';
+import {NgForOf, NgStyle} from '@angular/common';
 import {FooterComponent} from '../footer/footer.component';
 import {NgxMaskDirective} from 'ngx-mask';
 import {OrderService} from '../../../services/order-service/order.service';
@@ -19,14 +19,15 @@ import {TrustBoxService} from '../../../services/trust-box/trust-box.service';
     FooterComponent,
     NgxMaskDirective,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgStyle
   ],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.css'
 })
 export class MainPageComponent implements OnInit,AfterViewInit {
   @ViewChild('carouselContainer', { static: false }) carouselContainer!: ElementRef;
-
+  tagColors: string[] = ['#FFB37E', '#A4D3EE', '#98FB98'];
   public teacherCards: any = [
     {
       name: 'Оралбек Тоқтарбек',
@@ -191,6 +192,10 @@ export class MainPageComponent implements OnInit,AfterViewInit {
         row.scrollLeft -= (firstPartnersRow.clientWidth + gap);
       }
     });
+  }
+
+  getTagColorByIndex(index: number): string {
+    return this.tagColors[index % this.tagColors.length];
   }
 
 }
