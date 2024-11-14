@@ -1016,6 +1016,16 @@ body {
 }
 
 @media(max-width: 550px) {
+  .main_page_block .header_container .text .address {
+    margin-bottom: 0;
+    gap: 3px;
+  }
+
+  .main_page_block .header_container .text .address img {
+    width: 14px;
+    height: 14px;
+  }
+
   .main_page_block .header_container .text .header {
     margin: 0;
     width: 210px;
@@ -1059,6 +1069,13 @@ body {
     margin-top: -15px;
   }
 
+  .main_page_block .header_container.school_container .main_poster {
+    margin-left: -25px;
+    height: 160px;
+    margin-top: -15px;
+    transform: translateY(15px);
+  }
+
   .block:first-child {
     border-bottom: 1px solid gray;
     position: fixed;
@@ -1071,7 +1088,7 @@ body {
   }
 
   .main_page_block .header_container {
-    margin-top: 110px;
+    margin-top: 97px;
   }
 
   .main_page_block .values_container .text h1, .main_page_block .values_container .text h1 span, .main_page_block .carousel_container .partners p {
@@ -1112,27 +1129,32 @@ body {
   }
 
   .main_page_block .form_container {
-    gap: 20px;
+    gap: 15px;
   }
 
   .main_page_block .form_container img {
-    height: 115px;
-    width: 108px;
+    height: 164px;
+  }
+
+  .main_page_block .form_container .text {
+    transform: translateY(17px);
   }
 
   .main_page_block .form_container .text .p_header {
-    margin-top: 0px;
+    margin-top: 0;
     font-size: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 
   .main_page_block .form_container .text span {
     font-size: 11px;
+    width: 55%;
+    display: block;
   }
 
   .main_page_block .form_container .text .form {
     gap: 6px;
-    margin-top: 10px;
+    margin-top: 15px;
   }
 
   .main_page_block .form_container .text .form input {
@@ -1339,7 +1361,7 @@ body {
 
 .left_model, .right_model {
   border-radius: 50%;
-  background: #fff200;
+  background: #b0a700f2;
   width: 50px;
   height: 50px;
 
@@ -1452,7 +1474,7 @@ body {
 
 @media (max-width: 480px) {
   .main_page_block.six_block {
-    margin-top: 30px;
+    margin-top: 70px;
     padding-top: 20px;
     padding-bottom: 20px;
   }
@@ -1475,6 +1497,10 @@ body {
   .six-info button {
     font-size: 12px;
     padding: 6px 12px;
+  }
+
+  .main_page_block .container.images {
+    margin-top: 80px;
   }
 }
 
@@ -1523,14 +1549,16 @@ body {
     padding: 8px;
   }
 
-  .left_model {
-    left: 5px;
+  .left_model, .right_model {
+    left: 0;
     top: calc(50% - 15px);
+    width: 15px;
+    height: 15px;
   }
 
   .right_model {
-    right: 5px;
-    top: calc(50% - 15px);
+    right: 0;
+    left: initial;
   }
 
   .close {

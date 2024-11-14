@@ -100,7 +100,7 @@ export class SchoolPageComponent implements OnInit {
     this.newsService.getNews(id).subscribe(data => {
       this.news = data.map((news: News) => ({
         ...news,
-        poster: `http://127.0.0.1:8000${news.poster}`
+        poster: `http://109.248.231.214${news.poster}`
       }));
     })
   }

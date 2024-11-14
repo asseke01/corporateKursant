@@ -104,6 +104,7 @@ export class MainPageComponent implements OnInit,AfterViewInit {
 
   ngOnInit() {
     this.getNews();
+    document.body.style.overflow = 'auto';
   }
 
 
