@@ -1,9 +1,10 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgxMaskDirective} from 'ngx-mask';
 import {Router} from '@angular/router';
 import {AlertService} from '../../../services/alert-service/alert.service';
 import {EmployeeService} from '../../../services/employee-service/employee.service';
+import {AuthService} from '../../../services/auth-service/auth.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -15,17 +16,24 @@ import {EmployeeService} from '../../../services/employee-service/employee.servi
   templateUrl: './admin-login.component.html',
   styleUrl: './admin-login.component.css'
 })
-export class AdminLoginComponent {
+export class AdminLoginComponent implements OnInit{
+
   private form = inject(FormBuilder);
   private alert = inject(AlertService);
   private employeeService = inject(EmployeeService);
   private router = inject(Router);
+  private authService = inject(AuthService);
 
   public adminForm = this.form.group({
     phone_number: ['', [ Validators.required,Validators.pattern(/^7\d{9}$/)]],
     password: ['', [ Validators.required,]]
   })
-
+  ngOnInit(): void {
+    const token = this.authService.getToken();
+    if (!token) {
+      localStorage.clear();
+    }
+  }
 
   onSubmit() {
     if (this.adminForm.valid) {

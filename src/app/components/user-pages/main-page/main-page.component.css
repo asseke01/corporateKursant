@@ -4,7 +4,6 @@
 }
 
 body, button, input[type="text"]::placeholder, input[type="text"], p, body * {
-  font-family: "Gilroy-Regular";
   letter-spacing: 0px;
   outline: none;
 }
@@ -14,7 +13,6 @@ button, a {
 }
 
 h1, h2, h3, h4, h5, h6, b {
-  font-family: "Gilroy-Medium"
 }
 
 body {
@@ -94,7 +92,6 @@ body {
 }
 
 #anketa_window form b {
-  font-family: Gilroy-Medium;
   display: block;
   margin: 18px 0;
   font-size: 20px;
@@ -257,11 +254,9 @@ body {
 }
 
 .categories-burger-content .go_back_to_burger span {
-  font-family: Gilroy-Medium;
 }
 
 .categories-burger-content .categories a {
-  font-family: Gilroy-Regular;
 }
 
 .categories-burger-content .go_back_to_burger .bars .bar {
@@ -297,7 +292,6 @@ body {
   font-size: 20px;
   display: block;
   margin: 15px 0;
-  font-family: Gilroy-Medium;
 }
 
 .burger a::after {
@@ -582,7 +576,6 @@ body {
 }
 
 .main_page_block .values_container .text h1 span {
-  font-family: Gilroy-Bold;
   background: linear-gradient(84.8deg, #6ADAFF 5.28%, #009ED2 50.27%);
   -webkit-background-clip: text;
   color: transparent;
@@ -606,7 +599,6 @@ body {
 }
 
 .main_page_block .values_container .text .values .value p {
-  font-family: Gilroy-Medium;
   font-size: 24px;
   margin-bottom: 3px;
 }
@@ -638,7 +630,6 @@ body {
 
 .main_page_block .carousel_container .partners p {
   font-size: 35px;
-  font-family: Gilroy-Bold;
   white-space: pre;
   color: white;
   margin: 21px 0;
@@ -676,7 +667,6 @@ body {
 
 .main_page_block .admins_container .p_header {
   font-size: 33px;
-  font-family: Gilroy-Medium;
   color: white;
 
   display: flex;
@@ -764,7 +754,6 @@ body {
   margin-top: 40px;
   margin-bottom: 8px;
 
-  font-family: Gilroy-Bold;
   font-size: 32px;
 }
 

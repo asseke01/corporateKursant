@@ -119,6 +119,8 @@ export class AdminNewsComponent implements OnInit{
   closeDialog(): void {
     this.dialog.closeAll();
     this.newsForm.reset();
+    this.tags.clear();
+    this.selectedFileName = '';
   }
 
 
@@ -234,6 +236,8 @@ export class AdminNewsComponent implements OnInit{
           if (response.success) {
             this.closeDialog();
             this.loadBox();
+            this.tags.clear();
+            this.selectedFileName = '';
             this.alert.success('Успешно сохранена');
           }
         },

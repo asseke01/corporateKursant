@@ -10,6 +10,7 @@ import {MainPageComponent} from './components/user-pages/main-page/main-page.com
 import {SchoolPageComponent} from './components/user-pages/school-page/school-page.component';
 import {NotFoundComponent} from './components/user-pages/not-found/not-found.component';
 import {NewsPageComponent} from './components/user-pages/news-page/news-page.component';
+import {NonAuthGuard} from './services/auth-service/non-auth.guard';
 
 export const routes: Routes = [
   {
@@ -22,7 +23,7 @@ export const routes: Routes = [
     path: 'school/kask', component: SchoolPageComponent
   },
   {
-    path:'admin-login', component:AdminLoginComponent
+    path:'admin-login', component:AdminLoginComponent,canActivate: [NonAuthGuard]
   },
   {
     path:'access-denied', component:AccessDeniedComponent
