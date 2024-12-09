@@ -86,7 +86,12 @@ export class UserNavbarComponent {
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
     this.closeMenu();
+  }
 
+  public routerClick(){
+    this.router.navigate(['mission'])
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
   }
 
   public backToMain() {

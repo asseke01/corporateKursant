@@ -601,6 +601,7 @@ body {
 .main_page_block .values_container .text .values .value p {
   font-size: 24px;
   margin-bottom: 3px;
+  font-weight: bold;
 }
 
 .main_page_block .values_container .text .values .value span {
@@ -633,6 +634,7 @@ body {
   white-space: pre;
   color: white;
   margin: 21px 0;
+  font-weight: bold;
 }
 
 .main_page_block .news_container {
@@ -646,6 +648,7 @@ body {
   justify-content: center;
   margin-top: 24px;
   font-size: 23px;
+  text-decoration: underline;
 }
 
 .main_page_block.admins_block {
@@ -734,6 +737,7 @@ body {
 
 .main_page_block .admins_container .admins .admin .title .text b {
   font-size: 17px;
+  font-weight: bold;
 }
 
 .main_page_block .form_container {
@@ -753,7 +757,7 @@ body {
 .main_page_block .form_container .text .p_header {
   margin-top: 40px;
   margin-bottom: 8px;
-
+  font-weight: bold;
   font-size: 32px;
 }
 
@@ -1417,8 +1421,8 @@ body {
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 16px;
-  font-weight: bold;
-  color: #4db6e4;
+  font-weight: normal;
+  color: black;
   background-color: #fff;
   border: none;
   border-radius: 8px;

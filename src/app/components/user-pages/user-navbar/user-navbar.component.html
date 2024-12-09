@@ -41,7 +41,7 @@
         </div>
       </div>
 
-      <div class="dropdown" [class.active]="isSchoolDropdownOpen" (click)="toggleSchoolDropdown()">
+      <div class="dropdown" [class.active]="isSchoolDropdownOpen" (click)="toggleSchoolDropdown()"  style=" margin-right: 45px">
         <div class="dropdown-header" >
           <span>Мектептер</span>
           <span class="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
@@ -60,6 +60,10 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="dropdown" (click)="routerClick()">
+        <span>Миссиямыз</span>
       </div>
 
 
@@ -123,7 +127,10 @@
         </div>
 
 
+
       </div>
+
+      <span (click)="routerClick()" class=" sidebar-dropdown-header" style="margin-bottom: 5px; margin-left: 10px; margin-top: 10px; cursor: pointer">Миссиямыз</span>
     </div>
 
 

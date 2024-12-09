@@ -8,6 +8,10 @@
   background-color: #212121;
 }
 
+.logo-section img{
+  width: 324px;
+}
+
 .footer-details {
   height: 384px;
   max-width: 1200px;

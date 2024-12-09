@@ -11,6 +11,7 @@ import {SchoolPageComponent} from './components/user-pages/school-page/school-pa
 import {NotFoundComponent} from './components/user-pages/not-found/not-found.component';
 import {NewsPageComponent} from './components/user-pages/news-page/news-page.component';
 import {NonAuthGuard} from './services/auth-service/non-auth.guard';
+import {MissionPageComponent} from './components/user-pages/mission-page/mission-page.component';
 
 export const routes: Routes = [
   {
@@ -24,6 +25,9 @@ export const routes: Routes = [
   },
   {
     path:'admin-login', component:AdminLoginComponent,canActivate: [NonAuthGuard]
+  },
+  {
+    path:'mission', component:MissionPageComponent
   },
   {
     path:'access-denied', component:AccessDeniedComponent
