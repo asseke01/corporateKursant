@@ -337,6 +337,8 @@ body {
     width: 600px;
   }
 
+
+
   .navbar-container a:not(:has(img)) {
     display: none;
   }
@@ -417,12 +419,15 @@ body {
   .footer-container {
     row-gap: 50px;
   }
+
+
 }
 
 @media(max-width: 550px) {
   .footer-container {
     gap: 25px;
   }
+
 
   .footer-container {
     row-gap: 60px;
@@ -666,7 +671,9 @@ body {
   margin: 0;
 }
 
-
+.six-info button{
+  display: flex;
+}
 
 .main_page_block .admins_container .p_header {
   font-size: 33px;
@@ -771,6 +778,8 @@ body {
     height: 350px;
   }
 
+
+
   .main_page_block .header_container .text .header {
     margin-top: 30px;
   }
@@ -839,6 +848,7 @@ body {
   .main_page_block .text .form .arrow {
     transform: translateX(35px);
   }
+
 }
 
 @media(max-width: 950px) {
@@ -915,6 +925,8 @@ body {
   .main_page_block .form_container .text .p_header {
     margin-top: 25px;
   }
+
+
 }
 
 @media(max-width: 680px) {
@@ -1485,6 +1497,7 @@ body {
     min-height: 100px;
     font-size: 12px;
     padding: 6px;
+    margin-bottom: 20px;
   }
 
   .six-info button {
@@ -1613,5 +1626,39 @@ body {
 @media (max-width: 550px) {
   .news_page_block{
     margin-top: 30px;
+  }
+}
+
+
+.mission_container{
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.mission_container h1{
+  padding: 0;
+  margin: 0;
+  font-size: 35px;
+}
+
+
+@media (max-width: 1024px) {
+
+  .mission_container h1{
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .mission_container h1{
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 425px) {
+  .mission_container h1{
+    font-size: 12px;
   }
 }

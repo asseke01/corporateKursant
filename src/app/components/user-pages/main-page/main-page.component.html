@@ -68,6 +68,9 @@
       </div>
     </div>
 
+
+
+
     <div class="container carousel_container" #carouselContainer>
       <div class="partners">
         <div class="partners_row">
@@ -92,26 +95,39 @@
         </div>
       </div>
     </div>
+  </div>
+    <div class="block main_page_block admins_block">
+      <div class="container mission_container">
+        <h1>МИССИЯМЫЗ: АДАМЗАТҚА ПАЙДАЛЫ ТҰЛҒА ҚАЛЫПТАСТЫРУ</h1>
+      </div>
+    </div>
 
-    <div class="container news_container">
-      <div class="news_list">
-        <div *ngFor="let new of (showAllNews ? news : news.slice(0, 3))" class="news_card" (click)="goToNewsDetail(new.id)">
-          <div class="poster" [ngStyle]="{'background-image': 'url(' + new.poster + ')'}"></div>
-          <div class="text">
-            <b>{{ new.name  }}</b>
-            <p>{{ new.description }}</p>
-            <div class="types">
+<div class="block main_page_block">
+  <div class="container news_container">
+    <div class="news_list">
+      <div *ngFor="let new of (showAllNews ? news : news.slice(0, 3))" class="news_card" (click)="goToNewsDetail(new.id)">
+        <div class="poster" [ngStyle]="{'background-image': 'url(' + new.poster + ')'}"></div>
+        <div class="text">
+          <b>{{ new.name  }}</b>
+          <p>{{ new.description }}</p>
+          <div class="types">
           <span *ngFor="let tag of new.tags; index as i" class="type" [ngStyle]="{'background-color': getTagColorByIndex(i)}">
             {{ tag }}
           </span>
-            </div>
           </div>
         </div>
       </div>
-      <a (click)="toggleShowAllNews()" class="see_more_news">{{ showAllNews ? 'Жасыру' : 'Толық көру' }}</a>
     </div>
-
+    <a (click)="toggleShowAllNews()" class="see_more_news">{{ showAllNews ? 'Жасыру' : 'Толық көру' }}</a>
   </div>
+</div>
+
+
+
+
+
+
+
 
   <div class="block main_page_block admins_block">
     <div class="container admins_container">
@@ -120,7 +136,7 @@
       <div class="admins">
         <div class="admin">
           <div class="title">
-            <div class="photo" style="background-image: url('assets/img/teacher1.svg')"></div>
+            <div class="photo" style="background-image: url('assets/img/teacher1.JPG')"></div>
 
             <div class="text">
               <b>Оралбек Тоқтарбек</b>
@@ -128,11 +144,11 @@
             </div>
           </div>
 
-          <i>“Оқушылар тұлға болып қалыптасудың соңғы қадамында жүргендіктен оларға тек білім беріп қоймай, сол түйгенін дұрыс пайдалануға, жақсы университетке түсуге, дұрыс мамандық таңдауға, өмірінде дұрыс шешім шығаруға үйрету — мақсатымыз.”</i>
+<!--          <i>“Оқушылар тұлға болып қалыптасудың соңғы қадамында жүргендіктен оларға тек білім беріп қоймай, сол түйгенін дұрыс пайдалануға, жақсы университетке түсуге, дұрыс мамандық таңдауға, өмірінде дұрыс шешім шығаруға үйрету — мақсатымыз.”</i>-->
         </div>
         <div class="admin">
           <div class="title">
-            <div class="photo" style="background-image: url('assets/img/teacher2.svg')"></div>
+            <div class="photo" style="background-image: url('assets/img/teacher2.JPG')"></div>
 
             <div class="text">
               <b>Қадырбай Бексеит</b>
@@ -140,23 +156,24 @@
             </div>
           </div>
 
-          <i>“Бәріміз бірге еліміздің дамуы мен халқымыздың өркендеуіне елеулі үлес қосатынымызға сеніміміз мол:”</i>
+<!--          <i>“Бәріміз бірге еліміздің дамуы мен халқымыздың өркендеуіне елеулі үлес қосатынымызға сеніміміз мол:”</i>-->
         </div>
         <div class="admin">
           <div class="title">
-            <div class="photo" style="background-image: url('assets/img/teacher1.svg')"></div>
+            <div class="photo" style="background-image: url('assets/img/teacher3.JPG')"></div>
 
             <div class="text">
-              <b>Оралбек Тоқтарбек</b>
-              <span>“Kursant Kaskelen” Мектеп директоры</span>
+              <b>Ералиев Серік Берікұлы</b>
+              <span>“KURSANT ALMALYBAK” директоры</span>
             </div>
           </div>
 
-          <i>“Оқушылар тұлға болып қалыптасудың соңғы қадамында жүргендіктен оларға тек білім беріп қоймай, сол түйгенін дұрыс пайдалануға, жақсы университетке түсуге, дұрыс мамандық таңдауға, өмірінде дұрыс шешім шығаруға үйрету — мақсатымыз.”</i>
+<!--          <i>“Оқушылар тұлға болып қалыптасудың соңғы қадамында жүргендіктен оларға тек білім беріп қоймай, сол түйгенін дұрыс пайдалануға, жақсы университетке түсуге, дұрыс мамандық таңдауға, өмірінде дұрыс шешім шығаруға үйрету — мақсатымыз.”</i>-->
         </div>
       </div>
     </div>
   </div>
+
 
   <div class="block main_page_block" id="section_five">
     <div class="container form_container">

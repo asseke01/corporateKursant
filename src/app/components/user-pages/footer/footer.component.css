@@ -29,6 +29,12 @@
   gap: 40px;
 }
 
+.school-contracts{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
 .footer-details h2 {
   font-size: 34px;
   font-weight: bold;
@@ -130,8 +136,14 @@
     gap: 10px;
   }
 
+  .school-contracts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .footer{
-    height: 400px;
+    height: 430px;
   }
   .footer-details{
     padding: 25px 10px;
