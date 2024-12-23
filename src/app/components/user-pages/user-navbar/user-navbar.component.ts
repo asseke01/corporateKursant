@@ -74,7 +74,7 @@ export class UserNavbarComponent {
         this.closeMenu();
 
       } else if (project === 'kursant') {
-        window.open('https://www.kursant.kz/', '_blank');
+        window.open('https://www.kursant-online.kz/', '_blank');
       }
     }, 100);
   }
