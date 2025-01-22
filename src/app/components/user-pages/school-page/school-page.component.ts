@@ -35,7 +35,7 @@ export class SchoolPageComponent implements OnInit {
   private trustBoxService = inject(TrustBoxService);
   private form = inject(FormBuilder);
   tagColors: string[] = ['#FFB37E', '#A4D3EE', '#98FB98'];
-
+  schoolData: any = {};
 
   public otinimForm = this.form.group({
     phone_number: ['', [Validators.required, Validators.pattern(/^7\d{9}$/)]],
@@ -51,18 +51,36 @@ export class SchoolPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const path = this.route.snapshot.routeConfig?.path;
-    if (path === 'school/alma') {
-      this.schoolName = 'Алмалы';
-      this.schoolId = 1
-      this.getNews(this.schoolId);
-    } else if (path === 'school/kask') {
-      this.schoolName = 'Қаскелең';
-      this.schoolId = 2
-      this.getNews(this.schoolId);
-    }
+    this.loadSchoolData();
     console.log(this.schoolName);
 
+  }
+
+  loadSchoolData() {
+    const path = window.location.pathname; // Получаем текущий путь
+    if (path.includes('alma')) {
+      this.schoolData = {
+        name: 'Оралбек Тоқтарбек',
+        title: '“Kursant Alma” Мектеп директоры',
+        text: '“Оқушылар тұлға болып қалыптасудың соңғы қадамында жүргендіктен оларға тек білім беріп қоймай, сол түйгенін\n' +
+          'дұрыс пайдалануға, жақсы университетке түсуге, дұрыс мамандық таңдауға, өмірінде дұрыс шешім шығаруға үйрету —\n' +
+          'мақсатымыз.”',
+        image: 'assets/img/alma-director.svg',
+        location: 'Алмалыбақ, Достық көшесі, №10',
+        schoolName: 'КурсАнт Алмалыбақ мектебі'
+      };
+    } else if (path.includes('kask')) {
+      this.schoolData = {
+        name: 'Оралбек Тоқтарбек',
+        title: '“Kursant Kaskelen” Мектеп директоры',
+        text: '“Оқушылар тұлға болып қалыптасудың соңғы қадамында жүргендіктен оларға тек білім беріп қоймай, сол түйгенін\n' +
+          'дұрыс пайдалануға, жақсы университетке түсуге, дұрыс мамандық таңдауға, өмірінде дұрыс шешім шығаруға үйрету —\n' +
+          'мақсатымыз.”',
+        image: 'assets/img/kask-director.svg',
+        location: 'Қаскелең, Қонаев к., №123',
+        schoolName: 'КурсАнт Қаскелең мектебі'
+      };
+    }
   }
 
   public teacherCards: any = [
