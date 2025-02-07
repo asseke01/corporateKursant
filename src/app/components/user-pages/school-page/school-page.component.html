@@ -26,13 +26,13 @@
       </form>
     </div>
 
-    <img src="assets/img/school-page-iocn.svg"  class="main_poster">
+    <img [src]="schoolData.schoolImage" class="main_poster">
   </div>
 
   <div class="container images">
     <div
       class="image"
-      *ngFor="let school_image of school_images, let i = index"
+      *ngFor="let school_image of schoolData.school_images, let i = index"
       [ngStyle]="{'background-image': 'url(' + '\'' + encodeURI(school_image) + '\'' + ')'}"
       (click)="open_image(i)">
     </div>
@@ -46,10 +46,11 @@
 
   <div class="modal" *ngIf="selectedImageUrl != null">
     <span class="close" (click)="closePreview()">&times;</span>
-    <img class="modal-content" [src]="school_images[selectedImageUrl]" alt="Preview">
+    <img class="modal-content" [src]="schoolData.school_images[selectedImageUrl]" alt="Preview">
 
-    <img src="assets/img/right.png" alt="" class="left_model" (click)="go_left()">
-    <img src="assets/img/right.png" alt="" class="right_model" (click)="go_right()">
+    <div class="navigates" (click)="go_left()"> <i class="bi bi-chevron-right"></i></div>
+    <div class="navigates right_navigate" (click)="go_right()"> <i class="bi bi-chevron-left"></i></div>
+<!--    <img src="assets/img/right.png" alt="" class="right_model" (click)="go_right()">-->
   </div>
 
   <div class="container news_container">
