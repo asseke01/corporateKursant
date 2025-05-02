@@ -728,7 +728,7 @@ body {
 }
 
 .main_page_block .admins_container .admins .admin .title {
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   display: flex;
   gap: 11px;
 }
@@ -750,11 +750,17 @@ body {
   height: 60px;
 }
 
+.picture-position {
+  background-position: calc(65% + 10px) 50% !important;
+  background-size: 125% !important;
+}
+
+
+
 .main_page_block .admins_container .admins .admin .title .text {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  width: 190px;
 }
 
 .main_page_block .admins_container .plus .plus-block .title .plus-text {
@@ -783,6 +789,7 @@ body {
   display: flex;
   gap: 87px;
   margin-top: 90px;
+  justify-content: center;
 }
 
 .main_page_block .form_container img {

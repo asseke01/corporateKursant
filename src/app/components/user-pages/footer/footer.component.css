@@ -36,12 +36,12 @@
 }
 
 .footer-details h2 {
-  font-size: 34px;
+  font-size: 24px;
   font-weight: bold;
 }
 
 .footer-details p {
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   font-family: Gilroy-Regular, sans-serif;
 }

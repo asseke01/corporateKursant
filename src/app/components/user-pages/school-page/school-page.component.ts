@@ -65,9 +65,9 @@ export class SchoolPageComponent implements OnInit {
           'дұрыс пайдалануға, жақсы университетке түсуге, дұрыс мамандық таңдауға, өмірінде дұрыс шешім шығаруға үйрету —\n' +
           'мақсатымыз.”',
         image: 'assets/img/alma-director.svg',
-        location: 'Алмалыбақ, Достық көшесі, №10',
+        location: 'Алмалыбақ, Бәсібеков көшесі, 18',
         schoolName: 'КурсАнт Алмалыбақ мектебі',
-        schoolImage: 'assets/img/almalybaq/almalybaq-school.jpg',
+        schoolImage: 'assets/img/kaskelen/kaskelen-school.jpg',
         school_images: ['assets/img/almalybaq/1.jpg', 'assets/img/almalybaq/2.jpg', 'assets/img/almalybaq/3.jpg', "assets/img/almalybaq/4.jpg",
           'assets/img/almalybaq/5.jpg', 'assets/img/almalybaq/6.jpg', 'assets/img/almalybaq/7.jpg', "assets/img/almalybaq/8.jpg",
           'assets/img/almalybaq/9.jpg', 'assets/img/almalybaq/10.jpg', 'assets/img/almalybaq/11.jpg', "assets/img/almalybaq/13.jpg"]
@@ -80,9 +80,9 @@ export class SchoolPageComponent implements OnInit {
           'дұрыс пайдалануға, жақсы университетке түсуге, дұрыс мамандық таңдауға, өмірінде дұрыс шешім шығаруға үйрету —\n' +
           'мақсатымыз.”',
         image: 'assets/img/kask-director.svg',
-        location: 'Қаскелең, Қонаев к., №123',
+        location: 'Қаскелең, Абай көшесі, 50Б',
         schoolName: 'КурсАнт Қаскелең мектебі',
-        schoolImage: 'assets/img/kaskelen/kaskelen-school.jpg',
+        schoolImage: 'assets/img/almalybaq/almalybaq-school.jpg',
         school_images: ['assets/img/kaskelen/1.jpg', 'assets/img/kaskelen/2.jpg', 'assets/img/kaskelen/3.jpg', "assets/img/kaskelen/4.jpg",
           'assets/img/kaskelen/5.jpg', 'assets/img/kaskelen/6.jpg', 'assets/img/kaskelen/7.jpg', "assets/img/kaskelen/8.jpg"]
       };

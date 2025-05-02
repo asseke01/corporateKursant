@@ -20,7 +20,7 @@ export class FooterComponent {
       if (project === 'testant') {
         window.open('https://testant.kz/', '_blank');
       } else if (project === 'kursant') {
-        window.open('https://www.kursant.kz/', '_blank');
+        window.open('https://kursant-online.kz/', '_blank');
       }
     }, 100);
   }
