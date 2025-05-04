@@ -955,6 +955,7 @@ body {
   .main_page_block .form_container {
     margin-top: 70px;
     gap: 50px;
+    align-items: center;
   }
 
   .main_page_block .form_container img {
@@ -966,6 +967,12 @@ body {
   }
 
 
+}
+
+@media (max-width: 800px) {
+  .main_page_block .form_container .text {
+    width: inherit;
+  }
 }
 
 @media(max-width: 680px) {
@@ -1180,10 +1187,6 @@ body {
     height: 164px;
   }
 
-  .main_page_block .form_container .text {
-    transform: translateY(17px);
-  }
-
   .main_page_block .form_container .text .p_header {
     margin-top: 0;
     font-size: 20px;
@@ -1192,7 +1195,7 @@ body {
 
   .main_page_block .form_container .text span {
     font-size: 11px;
-    width: 55%;
+    width: 90%;
     display: block;
   }
 
